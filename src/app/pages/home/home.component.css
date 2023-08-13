@@ -1,0 +1,218 @@
+:host { 
+  display: contents; 
+}
+.home-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-size: auto;
+  background-image: url("https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDE2fHxtZWRpY2luZXxlbnwwfHx8fDE2OTE5NDUyODF8MA&ixlib=rb-4.0.3&w=1500");
+}
+.home-fields {
+  top: 0px;
+  right: 0px;
+  width: 60^;
+  bottom: 0px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  padding: 61px 114px;
+  position: absolute;
+  align-self: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 70px 0 0 60px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+}
+.home-screen {
+  gap: 33px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-text {
+  color: var(--dl-color-default-heading1);
+  width: 100%;
+  height: auto;
+  font-size: 48px;
+  font-style: Bold;
+  text-align: center;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 42px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-frame59 {
+  gap: 33px;
+  width: 581px;
+  height: 78px;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
+.home-logintype {
+  gap: 36px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: flex;
+  padding: 10px 12px;
+  overflow: hidden;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(227, 241, 255, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: space-between;
+  background-color: rgba(241, 246, 255, 1);
+}
+.home-text02 {
+  color: rgba(97, 147, 181, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Bold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 42px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-fluentchevrondown16filled {
+  width: 28px;
+  height: 28px;
+}
+.home-input {
+  gap: 48px;
+  width: 100%;
+  display: flex;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-text04 {
+  color: rgba(125, 122, 122, 1);
+  height: auto;
+  font-size: 16px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: 42px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-line5 {
+  width: 100%;
+  height: 1px;
+  align-self: stretch;
+}
+.home-input1 {
+  gap: 48px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-text06 {
+  color: rgba(125, 122, 122, 1);
+  height: auto;
+  font-size: 16px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: 42px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-blind1 {
+  right: 0px;
+  width: 22px;
+  bottom: 49px;
+  height: 22px;
+  display: flex;
+  z-index: 2;
+  overflow: hidden;
+  position: absolute;
+  align-self: flex-end;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.home-group {
+  top: 1.3744864463806152px;
+  left: -1.4901161193847656e-8px;
+  width: 22.00006866455078px;
+  height: 19.251001358032227px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.home-vector {
+  top: 0px;
+  left: 1.3744049072265625px;
+  width: 19px;
+  height: 19px;
+  position: absolute;
+}
+.home-vector1 {
+  top: 2.7503037452697754px;
+  left: 0px;
+  width: 14px;
+  height: 11px;
+  position: absolute;
+}
+.home-vector2 {
+  top: 5.664108753204346px;
+  left: 8.317163467407227px;
+  width: 14px;
+  height: 11px;
+  position: absolute;
+}
+.home-line51 {
+  width: 100%x;
+  height: 1px;
+  z-index: 1;
+  align-self: stretch;
+}
+.home-button {
+  gap: 10px;
+  width: 100%;
+  display: flex;
+  padding: 16px 24px;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  justify-content: center;
+  background-color: rgba(85, 107, 128, 1);
+}
+.home-text08 {
+  color: rgb(255, 255, 255);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 42px;
+  font-stretch: normal;
+  text-decoration: none;
+}
