@@ -3,12 +3,11 @@
 }
 .home-container {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
-  background-size: auto;
   background-image: url("https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDE2fHxtZWRpY2luZXxlbnwwfHx8fDE2OTE5NDUyODF8MA&ixlib=rb-4.0.3&w=1500");
 }
 .home-fields {
@@ -16,7 +15,7 @@
   right: 0px;
   width: 40%;
   bottom: 0px;
-  height: 80%;
+  height: 90%;
   margin: auto;
   display: flex;
   padding: 61px 114px;

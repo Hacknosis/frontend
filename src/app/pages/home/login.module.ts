@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { ComponentsModule } from '../../components/components.module'
-import { Home } from './home.component'
+import { Home } from './login.component'
 
 const routes = [
   {
