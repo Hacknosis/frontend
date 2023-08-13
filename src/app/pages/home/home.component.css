@@ -14,9 +14,9 @@
 .home-fields {
   top: 0px;
   right: 0px;
-  width: 60^;
+  width: 40%;
   bottom: 0px;
-  height: 100%;
+  height: 80%;
   margin: auto;
   display: flex;
   padding: 61px 114px;
@@ -187,7 +187,7 @@
   position: absolute;
 }
 .home-line51 {
-  width: 100%x;
+  width: 100%;
   height: 1px;
   z-index: 1;
   align-self: stretch;
