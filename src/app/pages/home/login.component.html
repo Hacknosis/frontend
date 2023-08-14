@@ -1,0 +1,55 @@
+<div class="login-container">
+  <div class="login-fields">
+    <div class="login-screen">
+      <span class="login-text"><span>ACCOUNT LOGIN</span></span>
+      <div class="login-frame59">
+        <div class="menu-container" clickOutside (clickOutside)="clickedOutside()">
+          <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>{{ selectedOption || 'Select a hospital site' }}</span></span>
+            <img
+            alt="fluentchevrondown16filledI501"
+            src="/assets/external/fluentchevrondown16filledi501-124.svg"
+            class="login-fluentchevrondown16filled"
+          /></div>
+          <div class="menu" *ngIf="isToggled">
+            <div class="menu-item" (click)="selectOption('Main Hospital')">Main Hospital</div>
+            <div class="menu-item" (click)="selectOption('Rehabitation Centre')">Rehabitation Centre</div>
+            <div class="menu-item" (click)="selectOption('Cancer Centre')">Cancer Centre</div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="login-input">
+        <span class="login-text04"><span>Username</span></span>
+        <input type="text" name="uname" required>
+      </div>
+      <div class="login-input1">
+        <span class="login-text06"><span>Password</span></span>
+        <input type="password" name="psw" required>
+        <div class="login-blind1">
+          <div class="login-group">
+            <img
+              alt="VectorI501"
+              src="/assets/external/vectori501-j99l.svg"
+              class="login-vector"
+            />
+            <img
+              alt="VectorI501"
+              src="/assets/external/vectori501-lm6n.svg"
+              class="login-vector1"
+            />
+            <img
+              alt="VectorI501"
+              src="/assets/external/vectori501-ycd.svg"
+              class="login-vector2"
+            />
+          </div>
+        </div>
+        
+      </div>
+      
+      <button class="login-button">
+        <span class="login-text08"><span>Login</span></span>
+      </button>
+    </div>
+  </div>
+</div>
