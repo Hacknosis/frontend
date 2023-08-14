@@ -3,7 +3,7 @@
     <div class="login-screen">
       <span class="login-text"><span>ACCOUNT LOGIN</span></span>
       <div class="login-frame59">
-        <div class="menu-container">
+        <div class="menu-container" clickOutside (clickOutside)="clickedOutside()">
           <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>Select a hospital site</span></span></div>
           <div class="menu" *ngIf="isToggled">
             <div class="menu-item">Site 1</div>

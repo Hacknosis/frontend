@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { ComponentsModule } from '../../components/components.module'
+import { ClickOutsideDirective } from './clickOutside.directive';
 import { Home } from './login.component'
 
 const routes = [
@@ -13,7 +14,7 @@ const routes = [
 ]
 
 @NgModule({
-  declarations: [Home],
+  declarations: [Home, ClickOutsideDirective],
   imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes)],
   exports: [Home],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
