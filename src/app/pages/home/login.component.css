@@ -92,9 +92,7 @@
   text-decoration: none;
 }
 .login-fluentchevrondown16filled {
-  display: flex;
-  overflow: hidden;
-  position: absolute;
+  display: display-inside;
   align-self: flex-end;
   align-items: flex-start;
   width: 28px;
@@ -240,7 +238,6 @@ input[type=text], input[type=password] {
   top: 0px;
   left: 0px;
   padding: 10px 12px;
-  overflow: hidden;
   position: absolute;
   align-self: stretch;
   align-items: center;
@@ -254,6 +251,9 @@ input[type=text], input[type=password] {
 }
 .toggle {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 65%;
 }
 .menu {
   background-color: #ccc;

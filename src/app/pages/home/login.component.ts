@@ -16,8 +16,13 @@ export class Home {
       },
     ])
   }
-
+  selectedOption: string | null = null;
   isToggled: boolean = false;
+
+  selectOption(option: string) {
+    this.selectedOption = option;
+    this.isToggled = false;
+  }
   toggleMenu(): void {
     this.isToggled = !this.isToggled;
   }
