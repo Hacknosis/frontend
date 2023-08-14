@@ -3,14 +3,20 @@
     <div class="login-screen">
       <span class="login-text"><span>ACCOUNT LOGIN</span></span>
       <div class="login-frame59">
-        <div class="login-logintype">
-          <span class="login-text02"><span>Hospital Site</span></span>
-          <img
+        <div class="menu-container">
+          <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>Select a hospital site</span></span></div>
+          <div class="menu" *ngIf="isToggled">
+            <div class="menu-item">Site 1</div>
+            <div class="menu-item">Site 2</div>
+            <div class="menu-item">Site 3</div>
+          </div>
+        </div>
+        <img
+            (click)="toggleMenu()"
             alt="fluentchevrondown16filledI501"
             src="/assets/external/fluentchevrondown16filledi501-124.svg"
             class="login-fluentchevrondown16filled"
           />
-        </div>
       </div>
       <div class="login-input">
         <span class="login-text04"><span>Username</span></span>
@@ -38,7 +44,9 @@
             />
           </div>
         </div>
+        
       </div>
+      
       <button class="login-button">
         <span class="login-text08"><span>Login</span></span>
       </button>

@@ -92,6 +92,11 @@
   text-decoration: none;
 }
 .login-fluentchevrondown16filled {
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-self: flex-end;
+  align-items: flex-start;
   width: 28px;
   height: 28px;
 }
@@ -204,7 +209,8 @@
   background-color: rgba(85, 107, 128, 1);
 }
 .login-button:hover {
-  background-color: rgb(118, 167, 212)
+  background-color: rgb(118, 167, 212);
+  border-color: gray;
 }
 .login-text08 {
   color: rgb(255, 255, 255);
@@ -227,4 +233,54 @@ input[type=text], input[type=password] {
   border-right: transparent;
   border-bottom: 1px solid #ccc;
   box-sizing: border-box;
+}
+.menu-container {
+  width: 100%;
+  gap: 36px;
+  top: 0px;
+  left: 0px;
+  padding: 10px 12px;
+  overflow: hidden;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(227, 241, 255, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: space-between;
+  background-color: rgba(241, 246, 255, 1);
+}
+.toggle {
+  padding: 10px;
+}
+.menu {
+  background-color: #ccc;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(227, 241, 255, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 10px;
+}
+.menu-item:hover {
+  background-color: #95b3ca;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(227, 241, 255, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.menu-container:hover {
+  background-color: #dbecf9;
 }

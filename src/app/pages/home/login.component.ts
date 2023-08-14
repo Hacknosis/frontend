@@ -16,4 +16,12 @@ export class Home {
       },
     ])
   }
+
+  isToggled: boolean = false;
+  toggleMenu(): void {
+    this.isToggled = !this.isToggled;
+  }
+  clickedOutside(): void {
+    this.isToggled = false;
+  }
 }
