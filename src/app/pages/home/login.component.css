@@ -97,7 +97,8 @@
   align-items: flex-start;
   width: 28px;
   height: 28px;
-  transform: translateX(100%);
+  position: absolute;
+  left: 90%;
 }
 .login-input {
   width: 100%;
