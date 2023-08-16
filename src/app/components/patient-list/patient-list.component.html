@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="main-content">
+  <div class="banner">
+    <h3>Round Patients</h3>
+    <button type="button" class="btn btn-secondary">Recently Accessed</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="patient-list-header">
+        <th *ngFor="let v of headerName">{{ v }}</th>
+      </tr>
+      <tr *ngFor="let p of patientsList" class="patient-list-item">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.sex }}</td>
+        <td class="scrollable-cell">{{ p.allergies.join(', ') }}</td>
+        <td style="color: red">{{ p.specialIndicators }}</td>
+        <td>{{ p.room }}</td>
+        <td>{{ p.resusStatus }}</td>
+        <td>{{ p.summary }}</td>
+      </tr>
+    </thead>
+  </table>
+</div>

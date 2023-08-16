@@ -1,0 +1,39 @@
+/* Add this CSS to your existing stylesheet */
+.main-content {
+  background: #606060;
+  display: flex;
+  justify-content: space-between; /* Add Space between doctor-info and nav-items-list */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.doctor-info {
+  padding-left: 1%;
+}
+
+.doctor-info h1 {
+  color: white;
+  padding-top: 10%;
+}
+
+.nav-items-list {
+  display: flex;
+  align-items: center;
+  margin-right: 1%;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+  padding: 10px;
+}
+
+.nav-item:hover {
+  border-color: white; /* Change the border color on hover */
+}
