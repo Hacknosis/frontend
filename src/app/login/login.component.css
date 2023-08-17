@@ -9,11 +9,14 @@
     align-items: center;
     flex-direction: column;
     background-image: url("https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDE2fHxtZWRpY2luZXxlbnwwfHx8fDE2OTE5NDUyODF8MA&ixlib=rb-4.0.3&w=1500");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
   .login-fields {
     top: 0px;
     right: 0px;
-    width: 45%;
+    width: 40%;
     bottom: 0px;
     height: 90%;
     margin: auto;

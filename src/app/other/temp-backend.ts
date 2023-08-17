@@ -7,7 +7,7 @@ let users = [{ id: 1, name: 'Jason', username: 'test', password: 'test' }
 ,{ id:2, firstName:'j', lastName:'g',username:'random',password:'1234'}];
 
 @Injectable()
-export class FakeBackendInterceptor implements HttpInterceptor {
+export class TempBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
@@ -57,6 +57,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 export const fakeBackendProvider = {
     // use fake backend in place of Http service for backend-less development
     provide: HTTP_INTERCEPTORS,
-    useClass: FakeBackendInterceptor,
+    useClass: TempBackendInterceptor,
     multi: true
 };
