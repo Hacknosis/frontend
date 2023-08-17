@@ -158,17 +158,8 @@
     font-stretch: normal;
     text-decoration: none;
   }
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom: 1px solid #ccc;
-    box-sizing: border-box;
-  }
   .menu-container {
+    z-index: 1000;
     width: 100%;
     gap: 36px;
     top: 0px;
@@ -221,4 +212,8 @@
   }
   .menu-container:hover {
     background-color: #dbecf9;
+  }
+
+  .inputfield {
+    width:100%;
   }

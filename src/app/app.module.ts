@@ -13,6 +13,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { ClickOutsideDirective } from './login/clickOutside.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material.module';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MaterialModule
     ],
     declarations: [
         AppComponent,
