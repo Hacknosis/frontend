@@ -1,35 +1,42 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import {RouterModule, Routes} from '@angular/router'
-import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ComponentsModule } from './components/components.module'
-import { AppComponent } from './app.component'
-import {PatientListComponent} from "./components/patient-list/patient-list.component";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptorService} from "./services/auth-interceptor.service";
+// used to create fake backend
+import { fakeBackendProvider } from './other';
 
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () =>
-      import('./pages/home/login.module').then((m) => m.HomeModule),
-  },
-  {
-    path: 'dashboard', component: PatientListComponent
-  }
-]
+import { AppRoutingModule } from './app-routing.module';
+import { JwtInterceptor, ErrorInterceptor } from './other';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { ClickOutsideDirective } from './login/clickOutside.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    ComponentsModule,
-    HttpClientModule],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        ClickOutsideDirective
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        fakeBackendProvider
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

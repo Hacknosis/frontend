@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<nav *ngIf="user">
+    <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

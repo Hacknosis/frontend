@@ -1,0 +1,49 @@
+<div class="login-container">
+    <div class="login-fields">
+      <div class="login-screen">
+        <span class="login-text"><span>ACCOUNT LOGIN</span></span>
+        <div class="login-frame59">
+          <div class="menu-container" clickOutside (clickOutside)="clickedOutside()">
+            <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>{{ selectedOption || 'Select a hospital site' }}</span></span>
+              <img
+              alt="fluentchevrondown16filledI501"
+              src="/assets/fluentchevrondown16filledi501-124.svg"
+              class="login-fluentchevrondown16filled"
+            /></div>
+            <div class="menu" *ngIf="isToggled">
+              <div class="menu-item" (click)="selectOption('Main Hospital')">Main Hospital</div>
+              <div class="menu-item" (click)="selectOption('Rehabitation Centre')">Rehabitation Centre</div>
+              <div class="menu-item" (click)="selectOption('Cancer Centre')">Cancer Centre</div>
+            </div>
+          </div>
+          
+        </div>
+        <div style="width:100%">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <mat-form-field class="inputfield">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+              </mat-form-field>
+                <mat-form-field class="inputfield">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+              </mat-form-field>
+                <div>
+                  <button [disabled]="loading" class="login-button">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                      <span class="login-text08"><span>Login</span></span>
+                    </button>
+                </div>
+          </form>
+      </div>
+        
+        
+      </div>
+    </div>
+  </div>
