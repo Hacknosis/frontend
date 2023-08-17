@@ -1,1 +1,41 @@
-<p>login works!</p>
+
+ <div class="login-container">
+    <div class="login-fields">
+      <div class="login-screen">
+        <span class="login-text"><span>ACCOUNT LOGIN</span></span>
+        <div class="login-frame59">
+          <div class="menu-container" clickOutside (clickOutside)="clickedOutside()">
+            <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>{{ selectedOption || 'Select a hospital site' }}</span></span>
+              <img
+              alt="fluentchevrondown16filledI501"
+              src="/assets/external/fluentchevrondown16filledi501-124.svg"
+              class="login-fluentchevrondown16filled"
+            /></div>
+            <div class="menu" *ngIf="isToggled">
+              <div class="menu-item" (click)="selectOption('Main Hospital')">Main Hospital</div>
+              <div class="menu-item" (click)="selectOption('Rehabitation Centre')">Rehabitation Centre</div>
+              <div class="menu-item" (click)="selectOption('Cancer Centre')">Cancer Centre</div>
+            </div>
+          </div>
+          
+        </div>
+            <div style="width:100%">
+                <form class="form" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
+                    <mat-form-field>
+                      <mat-label>Username</mat-label>
+                      <input matInput formControlName="id" >
+                    </mat-form-field>
+                      <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" >
+                    </mat-form-field>
+                    
+                      <div>
+                        <button class="login-button">
+                            <span class="login-text08"><span>Login</span></span>
+                          </button>
+                      </div>
+                </form>
+            </div>
+      </div>
+    </div>
