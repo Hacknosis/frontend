@@ -40,4 +40,8 @@ export class AccountService {
         this.userSubject.next(null);
         this.router.navigate(['/account/login']);
     }
+
+    getCurrentUser(): Observable<User | null> {
+        return this.user;
+      }
 }

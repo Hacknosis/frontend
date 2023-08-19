@@ -4,11 +4,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService } from '@app/services'
-import { ClickOutsideDirective } from './clickOutside.directive';
+import { User } from '@app/models';
+import { MatDialog } from '@angular/material/dialog';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css']})
 
 export class LoginComponent implements OnInit {
+    user: User | null = null; // Store the user information
     form!: FormGroup;
     loading = false;
     submitted = false;
@@ -18,7 +21,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService
+        private accountService: AccountService,
+        private dialog: MatDialog
     ) {
         // redirect to home if already logged in
         if (this.accountService.userValue) {
@@ -31,6 +35,13 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+        this.accountService.getCurrentUser().subscribe(
+            user => {
+              if (user) {
+                this.user = user;
+              }
+            }
+          );
     }
 
     // convenience getter for easy access to form fields
@@ -77,4 +88,5 @@ export class LoginComponent implements OnInit {
     clickedOutside(): void {
         this.isToggled = false;
     }
+
 }
