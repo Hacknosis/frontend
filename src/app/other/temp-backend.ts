@@ -3,7 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
-let users = [{ id: 1, name: 'Jason', username: 'test', password: 'test' }
+let users = [{ id: 1, firstName: 'test', lastName:'test',username: 'test', password: 'test', role:'nurse',extension:'5050' }
 ,{ id:2, firstName:'j', lastName:'g',username:'random',password:'1234'}];
 
 @Injectable()

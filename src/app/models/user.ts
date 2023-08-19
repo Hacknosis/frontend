@@ -2,6 +2,9 @@ export class User {
     id?: string;
     username?: string;
     password?: string;
-    name?: string;
+    firstName?: string;
+    lastName?: string;
+    role?: string;
+    extension?: string;
     token?: string;
 }

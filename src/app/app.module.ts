@@ -14,6 +14,8 @@ import { LoginComponent } from './login';
 import { ClickOutsideDirective } from './login/clickOutside.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
     imports: [
@@ -22,13 +24,15 @@ import { MaterialModule } from 'src/material.module';
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        MatDialogModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        UserProfileComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
