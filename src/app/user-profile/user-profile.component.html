@@ -1,11 +1,32 @@
-<div class="user">
+
+  <div class="user-profile">
     <h2>User Profile</h2>
-    <div *ngIf="user"> 
+  
+    <!-- Display user profile details -->
+    <div *ngIf="user && !editMode">
         <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
         <p><strong>ID Number:</strong> {{ user.id }} </p>
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Role:</strong> {{ user.role }} </p>
         <p><strong>Extension:</strong> {{ user.extension }} </p>
+      <button mat-button (click)="toggleEditMode()">Edit</button>
+      <button mat-button (click)="closeDialog()">Close</button>
     </div>
-    <button mat-button (click)="closeDialog()">Close</button>
+  
+    <!-- Editable fields when in edit mode -->
+    <div *ngIf="editMode">
+      <form [formGroup]="editForm">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+        <!-- Add more form fields as needed -->
+      </form>
+      <button mat-button (click)="saveChanges()">Save</button>
+      <button mat-button (click)="cancelEdit()">Cancel</button>
+    </div>
   </div>
