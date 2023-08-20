@@ -1,28 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
 import { AccountService } from '@app/services'
-import { User } from '@app/models';
-import { MatDialog } from '@angular/material/dialog';
-import { UserProfileComponent } from '../user-profile/user-profile.component';
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {first} from "rxjs";
+import Swal from "sweetalert2";
 
-@Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.css']})
-
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
-    user: User | null = null; // Store the user information
     form!: FormGroup;
     loading = false;
     submitted = false;
-    error?: string;
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService,
-        private dialog: MatDialog
+        private accountService: AccountService
     ) {
         // redirect to home if already logged in
         if (this.accountService.userValue) {
@@ -35,13 +32,6 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-        this.accountService.getCurrentUser().subscribe(
-            user => {
-              if (user) {
-                this.user = user;
-              }
-            }
-          );
     }
 
     // convenience getter for easy access to form fields
@@ -49,9 +39,6 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
-        // reset alert on submit
-        this.error = '';
 
         // stop here if form is invalid
         if (this.form.invalid) {
@@ -63,12 +50,14 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    // get return url from query parameters or default to home page
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                    this.router.navigateByUrl(returnUrl);
+                    Swal.fire("Login Success", "You will be directed to dashboard", "success").then(r => {
+                      // get return url from query parameters or default to home page
+                      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                      this.router.navigateByUrl(returnUrl);
+                    });
                 },
-                error: error => {
-                    this.error = error;
+                error: res => {
+                    Swal.fire('There was an error:', res.error.errors[0], 'error');
                     this.loading = false;
                 }
             });
@@ -88,5 +77,4 @@ export class LoginComponent implements OnInit {
     clickedOutside(): void {
         this.isToggled = false;
     }
-
 }

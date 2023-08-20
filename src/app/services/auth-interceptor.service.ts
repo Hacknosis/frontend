@@ -3,6 +3,7 @@ import {HttpEvent, HttpHandler, HttpRequest} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {AccountService} from "@app/services/account.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import Swal from "sweetalert2";
 export class AuthInterceptorService {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
   ) {}
 
   /**
@@ -25,7 +27,7 @@ export class AuthInterceptorService {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let token = localStorage.getItem('acc');
+    let token = sessionStorage.getItem('acc');
 
     if (token !== null) {
       request = AuthInterceptorService.addTokenToRequest(request, token);
@@ -34,10 +36,7 @@ export class AuthInterceptorService {
     return next.handle(request).pipe(
       catchError((error) => {
         if (error.status === 401) {
-          localStorage.clear();
-          Swal.fire("Session Ended", "Please login again", "error").then(r => {
-            this.router.navigateByUrl('/login');
-          });
+          this.accountService.logout();
         }
         return throwError(error);
       })
