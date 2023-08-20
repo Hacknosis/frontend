@@ -1,15 +1,15 @@
 
   <div class="user-profile">
-    <h2>User Profile</h2>
   
     <!-- Display user profile details -->
-    <div *ngIf="user && !editMode">
-        <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+    <div *ngIf="user && !editMode" class="info">
+      <h1>{{ user.firstName }} {{ user.lastName }}</h1><br><br>
         <p><strong>ID Number:</strong> {{ user.id }} </p>
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Role:</strong> {{ user.role }} </p>
         <p><strong>Extension:</strong> {{ user.extension }} </p>
-      <button mat-button (click)="toggleEditMode()">Edit</button>
+      <br><br>
+      <button class="edit" (click)="toggleEditMode()"><span class="edit-text">Edit Password</span></button>
       <button mat-button (click)="closeDialog()">Close</button>
     </div>
   
@@ -17,24 +17,8 @@
     <div *ngIf="editMode">
       <form [formGroup]="editForm">
         <mat-form-field>
-          <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Last Name</mat-label>
-          <input matInput formControlName="lastName" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
+          <mat-label>New Password</mat-label>
           <input matInput formControlName="password" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Role</mat-label>
-          <input matInput formControlName="role" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Extension</mat-label>
-          <input matInput formControlName="extension" />
         </mat-form-field>
       </form>
       <button mat-button (click)="saveChanges()">Save</button>

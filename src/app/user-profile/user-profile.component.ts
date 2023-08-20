@@ -23,11 +23,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private accountService: AccountService,private dialogRef: MatDialogRef<UserProfileComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: User, private formBuilder: FormBuilder ) { this.user = this.data; 
       this.editForm = this.formBuilder.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        password: [''],
-        role: ['', Validators.required],
-        extension:['', Validators.required]}); }
+        password: ['', Validators.required]}); }
 
   ngOnInit() {
     this.accountService.getCurrentUser().subscribe(
@@ -46,7 +42,8 @@ export class UserProfileComponent implements OnInit {
   toggleEditMode() {
     this.editMode = !this.editMode;
     if (this.editMode) {
-      this.editedUser = { ...this.data };
+      const { password, ...userDataWithoutPassword } = this.data;
+      this.editedUser = { ...userDataWithoutPassword };
       this.editForm.patchValue(this.editedUser); // Update form values with user data
     }
   }

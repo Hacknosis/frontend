@@ -5,7 +5,8 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { User } from '@app/models';
 
 @Component({
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   user: User | null;
@@ -13,8 +14,9 @@ export class HomeComponent {
 
   openUserProfile() {
     this.dialog.open(UserProfileComponent, {
-      width: '50%',
-      height: '80%',
+      disableClose: true,
+      width: '30%',
+      height: '60%',
       data: this.user 
     });
   }
