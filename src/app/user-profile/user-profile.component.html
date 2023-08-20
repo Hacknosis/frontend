@@ -24,7 +24,18 @@
           <mat-label>Last Name</mat-label>
           <input matInput formControlName="lastName" />
         </mat-form-field>
-        <!-- Add more form fields as needed -->
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <input matInput formControlName="role" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Extension</mat-label>
+          <input matInput formControlName="extension" />
+        </mat-form-field>
       </form>
       <button mat-button (click)="saveChanges()">Save</button>
       <button mat-button (click)="cancelEdit()">Cancel</button>

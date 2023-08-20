@@ -3,7 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AccountService } from '@app/services';
 import { User } from '@app/models';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,15 +16,27 @@ export class UserProfileComponent implements OnInit {
   editMode = false;
   editForm: FormGroup;
   editedUser: User = {};
+  loading = false;
+  submitting = false;
+  submitted = false;
 
   constructor(private accountService: AccountService,private dialogRef: MatDialogRef<UserProfileComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: User, private formBuilder: FormBuilder ) { this.user = data; 
+    @Inject(MAT_DIALOG_DATA) public data: User, private formBuilder: FormBuilder ) { this.user = this.data; 
       this.editForm = this.formBuilder.group({
-        firstName: [''],
-        lastName: ['']}); }
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        password: [''],
+        role: ['', Validators.required],
+        extension:['', Validators.required]}); }
 
   ngOnInit() {
-    this.user = this.accountService.userValue;
+    this.accountService.getCurrentUser().subscribe(
+      user => {
+        if (user) {
+          this.user = user;
+        }
+      }
+    );
   }
 
   closeDialog() {
@@ -41,13 +53,8 @@ export class UserProfileComponent implements OnInit {
 
   saveChanges() {
     if (this.editForm.valid) {
-      // Update user data with form values
       this.editedUser = { ...this.editForm.value };
       // Send updated user data to the backend and update user
-      // Once saved, update the user and exit edit mode
-      // Call a function to update the backend user data
-      // ...
-
       this.editMode = false;
     }
   }
