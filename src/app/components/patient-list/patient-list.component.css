@@ -1,0 +1,64 @@
+.banner {
+  margin-top: 1%;
+  background-color: #e8e7e7;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+.banner h2 {
+  color: #666666;
+  margin: 0 0 0 1%; /* Reset margins */
+}
+
+.banner button {
+  border-radius: 100px;
+  background-color: #666666;
+  color: white;
+  margin-right: 1%;
+  cursor: pointer;
+}
+
+.patient-list {
+  width: 95%;
+  margin: 1% auto; /* Center the table */
+}
+
+.patient-list-header {
+  background-color: #D9FDFF;
+  font-family: 'poppins', serif;
+}
+
+.patient-list-item {
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.patient-list-item:hover td {
+  background-color: #bbbaba; /* Set the background color for hover effect */
+}
+
+.scrollable-cell {
+  max-width: 150px; /* Adjust as needed */
+  white-space: nowrap; /* Prevent line breaks within the cell */
+  overflow: auto; /* Add a scrollbar when content overflows */
+}
+
+/* Custom scrollbar styles */
+.scrollable-cell::-webkit-scrollbar {
+  height: 5px;
+}
+
+.scrollable-cell::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scrollable-cell::-webkit-scrollbar-thumb {
+  background: #bec4c4;
+}
+
+.scrollable-cell::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+

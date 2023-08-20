@@ -1,7 +1,10 @@
+import {Patient} from "@app/models/patient";
+
 export class User {
     id?: string;
     username?: string;
-    password?: string;
     name?: string;
-    token?: string;
+    email?: string;
+    extension?: string;
+    patients?: Patient[];
 }

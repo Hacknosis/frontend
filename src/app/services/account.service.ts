@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {HttpClient} from "@angular/common/http";
 
 import { environment } from '@environments/environment';
 import { User } from '@app/models';
+import Swal from "sweetalert2";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -14,9 +15,9 @@ export class AccountService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private httpClient: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+        this.userSubject = new BehaviorSubject(JSON.parse(sessionStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();
     }
 
@@ -24,20 +25,25 @@ export class AccountService {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
+    public login(username: string, password: string): Observable<User> {
+        let url = `${environment.apiUrl}/auth/login`;
+        return this.httpClient.post<{ access_token: string, user: User }>(url, { username, password })
+            .pipe(map(response => {
+                console.log(response);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
+                sessionStorage.setItem('acc', response.access_token);
+                sessionStorage.setItem('user', JSON.stringify(response.user));
+                this.userSubject.next(response.user);
+                return response.user;
             }));
     }
 
-    logout() {
+    public logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
+        sessionStorage.clear();
         this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
+        Swal.fire("Session Ended", "Please login again", "error").then(r => {
+          this.router.navigate(['/account/login']);
+        });
     }
 }

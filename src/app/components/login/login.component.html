@@ -7,16 +7,17 @@
             <div class="toggle" (click)="toggleMenu()"><span class="login-text02"><span>{{ selectedOption || 'Select a hospital site' }}</span></span>
               <img
               alt="fluentchevrondown16filledI501"
-              src="/assets/fluentchevrondown16filledi501-124.svg"
+              src="../../../assets/fluentchevrondown16filledi501-124.svg"
               class="login-fluentchevrondown16filled"
-            /></div>
+              />
+            </div>
             <div class="menu" *ngIf="isToggled">
               <div class="menu-item" (click)="selectOption('Main Hospital')">Main Hospital</div>
               <div class="menu-item" (click)="selectOption('Rehabitation Centre')">Rehabitation Centre</div>
               <div class="menu-item" (click)="selectOption('Cancer Centre')">Cancer Centre</div>
             </div>
           </div>
-          
+
         </div>
         <div style="width:100%">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -42,8 +43,8 @@
                 </div>
           </form>
       </div>
-        
-        
+
+
       </div>
     </div>
   </div>
