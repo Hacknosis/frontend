@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+
+<div class="main-content">
+  <div class="patient-profile">
+
+    <div class="report-gallery">
+      <div class="report-list-title">
+        <h2>Pending Reports</h2>
+      </div>
+      <table mat-table [dataSource]="pendingReports" class="test-report-list">
+        <ng-container matColumnDef="Clinic">
+          <th mat-header-cell *matHeaderCellDef> Clinic </th>
+          <td mat-cell *matCellDef="let report"> {{ report.analysisResult }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Report Type">
+          <th mat-header-cell *matHeaderCellDef> Report Type </th>
+          <td mat-cell *matCellDef="let report"> {{ report.type }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let report"> {{ report.reportStatus }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item"></tr>
+      </table>
+
+      <div class="report-list-title">
+        <h2>Reports</h2>
+      </div>
+      <table mat-table [dataSource]="availableReports" class="test-report-list">
+        <ng-container matColumnDef="Clinic">
+          <th mat-header-cell *matHeaderCellDef> Clinic </th>
+          <td mat-cell *matCellDef="let report"> {{ report.analysisResult }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Report Type">
+          <th mat-header-cell *matHeaderCellDef> Report Type </th>
+          <td mat-cell *matCellDef="let report"> {{ report.type }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let report"> {{ report.reportStatus }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item"></tr>
+      </table>
+    </div>
+    <div class="patient-info">
+      <h2>{{ patient.name }}</h2>
+      <p>Patient ID: {{ patient.id }}</p>
+      <p>Summary: {{ patient.summary }}</p>
+      <p>Age: {{ patient.age }}</p>
+      <p>ResusStatus: {{ patient.resusStatus }}</p>
+      <p>Allergies: {{ patient.allergies }}</p>
+      <p>Indicators: {{ patient.specialIndicators }}</p>
+      <p>Birth Sex: {{ patient!.sex }}</p>
+    </div>
+
+  </div>
+  <div class="report-view">
+    <h2>Please select a report to view</h2>
+  </div>
+</div>
