@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
 import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {AuthInterceptorService} from "@app/services";
   ],
     declarations: [
         AppComponent,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        UserProfileComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

@@ -1,0 +1,95 @@
+.user-profile {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    color: white;
+    font-family: poppins;
+    background-color: rgb(85, 117, 176);
+}
+
+.user-profile h2 {
+    margin-bottom: 10%;
+    font-size: 3rem;
+}
+
+.user-profile h3 {
+    font-size: 1.2rem;
+}
+
+.user-profile p {
+    font-size: 1rem;
+    margin-bottom: 5%;
+}
+
+.user-profile button {
+    margin-top: 10px;
+    color: white;
+}
+
+.edit {
+    margin-top: 20%;
+    top: 72%;
+    left: 28%;
+    width: 45%;
+    height: 7%;
+    display: flex;
+    position: absolute;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 0.8rem;
+    justify-content: center;
+    background-color:rgb(118, 214, 246);
+}
+
+.close {
+    background-color: rgb(85, 117, 176);
+    border:0ch;
+    top: 7%;
+    left: 73%;
+    scale: 60%;
+    display: flex;
+    position: absolute;
+}
+
+.editModebutton {
+    width: 60%;
+    height: 30%;
+    left: 2%;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 1rem;
+    justify-content: center;
+    background-color:rgb(118, 214, 246);
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.close:hover {
+    scale: 65%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input[type="password"] {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form button {
+    margin-top: 10px;
+}

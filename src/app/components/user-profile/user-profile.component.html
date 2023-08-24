@@ -1,0 +1,26 @@
+<div class="user-profile">
+
+    <div *ngIf="!editMode">
+        <h2>{{ user.name }}</h2>
+        <p><strong>Username:</strong> {{ user.username}}</p>
+        <p><strong>User ID:</strong> {{ user.id}}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Extension:</strong> {{ user.extension }}</p>
+
+        <button class="edit" mat-button (click)="editProfile()">Edit Password</button>
+        <button class="close" (click)="closeDialog()"><img
+            src="../../../assets/subtract5016-ufl6.svg"
+          /></button>
+    </div>
+
+    <div *ngIf="editMode">
+        <h3>Change Password</h3>
+        <form [formGroup]="form" (ngSubmit)="saveChanges()">
+            <div>
+              <input matInput type="password" id="password" placeholder="New Password" name="password" formControlName="password" required>
+            </div>
+            <button class="editModebutton" mat-button type="submit">Save</button>
+            <button class="editModebutton" mat-button (click)="cancelEdit()">Cancel</button>
+          </form>
+      </div>
+</div>
