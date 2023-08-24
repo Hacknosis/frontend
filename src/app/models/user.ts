@@ -7,4 +7,5 @@ export class User {
     email?: string;
     extension?: string;
     patients?: Patient[];
+    password?: string;
 }

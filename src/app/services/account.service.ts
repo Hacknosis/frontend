@@ -46,4 +46,9 @@ export class AccountService {
           this.router.navigate(['/account/login']);
         });
     }
+
+    public updateUserInfo(updatedUser: User): Observable<string> {
+        const url = `${environment.apiUrl}/user/info_update`;    
+        return this.httpClient.put(url, updatedUser, {responseType: "text"});
+    }
 }

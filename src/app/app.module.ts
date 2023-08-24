@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { ClickOutsideDirective } from './components/login/clickOutside.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
+import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
-import {ComponentsModule} from "@app/components/components.module";
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -25,8 +26,9 @@ import {ComponentsModule} from "@app/components/components.module";
     ComponentsModule
   ],
     declarations: [
-      AppComponent,
-      ClickOutsideDirective,
+        AppComponent,
+        ClickOutsideDirective,
+        UserProfileComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

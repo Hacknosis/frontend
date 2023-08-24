@@ -3,8 +3,8 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
-let users = [{ id: 1, name: 'Jason', username: 'test', password: 'test' }
-,{ id:2, firstName:'j', lastName:'g',username:'random',password:'1234'}];
+let users = [{ id: 1, firstName: 'test', lastName:'test',username: 'test', password: 'test', role:'nurse',extension:'5050' }
+,{ id:2, firstName:'j', lastName:'g',username:'random',password:'1234', role:'doctor',extension:'0000'}];
 
 @Injectable()
 export class TempBackendInterceptor implements HttpInterceptor {
@@ -48,8 +48,8 @@ export class TempBackendInterceptor implements HttpInterceptor {
         }
 
         function details(user: any) {
-            const { id, username, name} = user;
-            return { id, username, name };
+            const { id, username, password, firstName, lastName, role, extension } = user;
+            return { id, username, password, firstName, lastName, role, extension };
         }
     }
 }
