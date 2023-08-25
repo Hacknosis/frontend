@@ -12,7 +12,7 @@ export class PatientService {
   constructor(private httpClient: HttpClient) { }
 
   public readReports(patient_id: number): Observable<TestReport[]> {
-    let url = `${environment.apiUrl}/patient/report/read/${patient_id}`;
+    let url = `${environment.apiUrl}/report/read/${patient_id}`;
     return this.httpClient.get<TestReport[]>(url);
   }
 }

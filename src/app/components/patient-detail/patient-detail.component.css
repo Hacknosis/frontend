@@ -20,6 +20,17 @@
   margin-top: 1%;
 }
 
+.report-list-title {
+  background-color: #7D7A7A;
+  margin: 0 1% 0 1%; /* top right bottom left */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.report-list-title h2 {
+  color: white;
+  margin: 0 0 0 1%; /* Reset margins */
+}
 
 .test-report-list {
   margin-bottom: 5%;
@@ -40,24 +51,17 @@
   border-top-right-radius: 50px;
 }
 
-.report-view {
-  width: 40%;
+.test-report-list-item {
+  cursor: pointer;
 }
 
-.report-list-title {
-  background-color: #7D7A7A;
-  margin: 0 1% 0 1%; /* top right bottom left */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.report-list-title h2 {
-  color: white;
-  margin: 0 0 0 1%; /* Reset margins */
+.test-report-list-item:hover {
+  background: #b2afaf;
 }
 
 .patient-info {
   width: 40%;
+  height: 60%;
   margin: 1% 5% 1% 10%; /* top right bottom left */
   border: 1px solid #ccc;
   padding: 10px;
@@ -66,6 +70,7 @@
 }
 
 .report-view {
+  width: 40%;
   background-color: #F5F5F5;
   margin: 1%;
   justify-content: center;
@@ -73,8 +78,27 @@
   flex-direction: column;
   display: flex;
   height: 85%;
+  position: relative;
 }
 
 .report-view h2 {
   color: #7E7E7E;
+}
+
+.report-info {
+  text-align: center;
+}
+
+.report {
+  max-height: 80%;
+  max-width: 80%;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 30px;
+  color: #7E7E7E;
+  position: absolute;
+  right: 1%;
+  top: 1%
 }
