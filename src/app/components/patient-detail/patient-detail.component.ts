@@ -6,6 +6,7 @@ import {User} from "@app/models";
 import {Patient} from "@app/models/patient";
 import {TestReport} from "@app/models/test-report";
 import {ReportStatus} from "@app/models/report-status";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-patient-detail',
@@ -13,6 +14,8 @@ import {ReportStatus} from "@app/models/report-status";
   styleUrls: ['./patient-detail.component.css']
 })
 export class PatientDetailComponent {
+  viewing: boolean = false;
+  selectedReport: TestReport = new TestReport();
   patient_id: number = -1;
   doctor: User = new User();
   patient: Patient = new Patient();
@@ -55,4 +58,15 @@ export class PatientDetailComponent {
       });
     });
   }
+
+  openReport(report: TestReport) {
+    this.viewing = true;
+    this.selectedReport = report;
+  }
+
+  closeReport() {
+    this.viewing = false;
+    this.selectedReport = new TestReport();
+  }
+
 }

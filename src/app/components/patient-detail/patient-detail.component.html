@@ -47,7 +47,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
-        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item" (dblclick)="openReport(row)"></tr>
       </table>
     </div>
     <div class="patient-info">
@@ -62,7 +62,15 @@
     </div>
 
   </div>
+
   <div class="report-view">
-    <h2>Please select a report to view</h2>
+    <i class="fa-regular fa-circle-xmark close-button" (click)="closeReport()"></i>
+    <h2 *ngIf="!viewing">Please select a report to view</h2>
+    <div *ngIf="viewing" class="report-info">
+      <h2>{{ selectedReport.type }} Report </h2>
+      <p>{{ selectedReport.date | date : "shortTime" }}</p>
+      <p>{{ selectedReport.analysisResult }}</p>
+      <img [src]="selectedReport.testData" class="report">
+    </div>
   </div>
 </div>
