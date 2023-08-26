@@ -14,6 +14,7 @@ import { MaterialModule } from 'src/material.module';
 import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import {NgxImageZoomModule} from "ngx-image-zoom";
 
 @NgModule({
   imports: [
@@ -23,12 +24,12 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxImageZoomModule
   ],
     declarations: [
         AppComponent,
-        ClickOutsideDirective,
-        UserProfileComponent
+        ClickOutsideDirective
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
