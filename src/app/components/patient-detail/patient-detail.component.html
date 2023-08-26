@@ -70,7 +70,17 @@
       <h2>{{ selectedReport.type }} Report </h2>
       <p>{{ selectedReport.date | date : "shortTime" }}</p>
       <p>{{ selectedReport.analysisResult }}</p>
-      <img [src]="selectedReport.testData" class="report">
+      <lib-ngx-image-zoom
+        [thumbImage]=selectedReport.testData
+        [fullImage]=selectedReport.testData
+        [magnification]="0.5"
+        [enableScrollZoom]="true"
+        [enableLens]="true"
+        [lensWidth]="150"
+        [lensHeight]="150"
+        zoomMode="click">
+      </lib-ngx-image-zoom>
     </div>
   </div>
+
 </div>

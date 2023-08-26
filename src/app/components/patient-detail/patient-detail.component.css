@@ -89,11 +89,6 @@
   text-align: center;
 }
 
-.report {
-  max-height: 80%;
-  max-width: 80%;
-}
-
 .close-button {
   cursor: pointer;
   font-size: 30px;
@@ -102,3 +97,14 @@
   right: 1%;
   top: 1%
 }
+
+::ng-deep .ngxImageZoomContainer > img {
+  max-height: 80%;
+  max-width: 80%;
+}
+
+::ng-deep .ngxImageZoomContainer {
+  width: 100% !important;
+  height: 100% !important;
+}
+
