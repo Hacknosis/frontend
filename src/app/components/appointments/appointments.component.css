@@ -1,0 +1,39 @@
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(85, 117, 176);
+    border-bottom: 1px solid #ccc;
+    color: white;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
+  
+  .close {
+    display: flex;
+    top: 2%;
+    right: 2%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close img {
+    width: 50%;
+    height: 50%;
+  }
+  
+  .close:hover img {
+    width: 55%;
+    height: 55%;
+  }
+  
+  
+  
+  
+  
+  

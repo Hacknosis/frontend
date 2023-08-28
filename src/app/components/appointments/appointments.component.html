@@ -1,0 +1,21 @@
+<div class="appointment">
+    <div class="header">
+      <p>Appointments</p>
+      
+    </div>
+    <button class="close" (click)="closeDialog()">
+        <img src="../../../assets/subtract5016-ufl6.svg" alt="Close" />
+      </button>
+    <table mat-table [dataSource]="dataSource">
+      <!-- Define your columns and data here -->
+      <ng-container matColumnDef="column1">
+        <th mat-header-cell *matHeaderCellDef> Column 1 </th>
+        <td mat-cell *matCellDef="let item"> {{ item.column1 }} </td>
+      </ng-container>
+  
+      <!-- Add more column definitions here -->
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

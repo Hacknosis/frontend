@@ -59,7 +59,11 @@
       <p>Allergies: {{ patient.allergies }}</p>
       <p>Indicators: {{ patient.specialIndicators }}</p>
       <p>Birth Sex: {{ patient!.sex }}</p>
+      <div class="appointments">
+        <button (click)="openDialog()">See All Appointments</button>
+      </div>
     </div>
+
 
   </div>
 
