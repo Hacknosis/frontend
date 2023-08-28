@@ -15,7 +15,7 @@
   .close {
     display: flex;
     top: 2%;
-    right: 2%;
+    right: 1%;
     position: absolute;
     background-color: transparent;
     border: none;
@@ -32,6 +32,19 @@
     height: 55%;
   }
   
+  .appointments-header {
+    background-color: #D9FDFF;
+    font-family: 'poppins', serif;
+    font-size: 1rem;
+  }
+
+  .appointment-item {
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  .appointment-item:hover {
+    background-color: #bbbaba;
+  }
   
   
   

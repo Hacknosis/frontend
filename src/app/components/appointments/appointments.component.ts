@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Patient } from '@app/models/patient';
 import { Appointment } from '@app/models/appointment';
+import { PatientService } from "@app/services";
 
 @Component({
   selector: 'app-appointments',
@@ -10,17 +11,16 @@ import { Appointment } from '@app/models/appointment';
   styleUrls: ['./appointments.component.css']
 })
 export class AppointmentsComponent {
-  dataSource: MatTableDataSource<any>;
-  displayedColumns: string[];
-  patient_id: number = -1;
   patient: Patient = new Patient();
   appointments: Appointment[] = [];
-  headers: string[] = ["Date/Time", "Main Provider", "Location"];
+  headers: string[] = ["Appointment Time", "Main Provider", "Location"];
 
-  constructor(public dialogRef: MatDialogRef<AppointmentsComponent>, 
+  constructor(public dialogRef: MatDialogRef<AppointmentsComponent>,
+    private patientService: PatientService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.dataSource = data.dataSource;
-    this.displayedColumns = data.displayedColumns;
+      this.patient = data.patient;
+      this.appointments = this.patient.appointments;
+      console.log(this.appointments);
   }
 
   closeDialog(): void {

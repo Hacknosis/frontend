@@ -73,17 +73,11 @@ export class PatientDetailComponent {
   }
 
   openDialog(): void {
-    const dataSource = new MatTableDataSource([
-      { column1: 'Data 1' },
-      { column1: 'Data 2' },
-    ]);
-    const displayedColumns = ['column1']; // Add column names here
-
     const dialogRef = this.dialog.open(AppointmentsComponent, {
       disableClose: true,
       width: '70%',
       height: '60%',
-      data: { dataSource, displayedColumns },
+      data: { patient: this.patient }
     });
   }
 }
