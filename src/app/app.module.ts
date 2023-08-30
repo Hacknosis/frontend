@@ -14,6 +14,11 @@ import { MaterialModule } from 'src/material.module';
 import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {NgxImageZoomModule} from "ngx-image-zoom";
 
 @NgModule({
@@ -24,12 +29,18 @@ import {NgxImageZoomModule} from "ngx-image-zoom";
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
     ComponentsModule,
     NgxImageZoomModule
   ],
     declarations: [
         AppComponent,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        UserProfileComponent,
+        AppointmentsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

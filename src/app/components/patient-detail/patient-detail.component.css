@@ -108,3 +108,18 @@
   height: 100% !important;
 }
 
+
+.appointments-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: #b0d7d9;
+  color: #000000;
+  border-radius: 5px; /* Adjust the radius value to control the amount of curvature */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.appointments-button:hover {
+  background-color: #78a2a4; /* Change the color on hover for a visual effect */
+}

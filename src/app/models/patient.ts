@@ -12,5 +12,5 @@ export class Patient {
   room: number = 0;
   resusStatus: ResusStatus = ResusStatus.ComfortCare;
   specialIndicators: Indicator[] = [];
-  appointments: Appointment = new Appointment();
+  appointments: Appointment[] = [];
 }

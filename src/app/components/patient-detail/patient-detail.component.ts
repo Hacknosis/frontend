@@ -6,7 +6,9 @@ import {User} from "@app/models";
 import {Patient} from "@app/models/patient";
 import {TestReport} from "@app/models/test-report";
 import {ReportStatus} from "@app/models/report-status";
-import {MatDialog} from "@angular/material/dialog";
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { AppointmentsComponent } from '../appointments/appointments.component';
 
 @Component({
   selector: 'app-patient-detail',
@@ -26,7 +28,8 @@ export class PatientDetailComponent {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private accountService: AccountService,
-              private patientService: PatientService) {
+              private patientService: PatientService,
+              private dialog: MatDialog) {
 
     const id = this.route.snapshot.paramMap.get("patient_id");
     if (id === null) {
@@ -69,4 +72,12 @@ export class PatientDetailComponent {
     this.selectedReport = new TestReport();
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AppointmentsComponent, {
+      disableClose: true,
+      width: '70%',
+      height: '60%',
+      data: { patient: this.patient }
+    });
+  }
 }

@@ -1,0 +1,64 @@
+<div class="appointment">
+    <div class="header">
+      <p>{{ patient.name }} - Appointments</p>
+      
+    </div>
+    <button class="close" (click)="closeDialog()">
+        <img src="../../../assets/subtract5016-ufl6.svg" alt="Close" />
+    </button>
+    <div *ngIf="!addMode">
+    <mat-table [dataSource]="appointments">
+      <ng-container matColumnDef="Appointment Time">
+        <mat-header-cell *matHeaderCellDef>Appointment Time</mat-header-cell>
+        <mat-cell *matCellDef="let appointment">{{ appointment.appointmentTime | date: 'MMM dd, yyyy hh:mm a' }}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Main Provider">
+        <mat-header-cell *matHeaderCellDef>Main Provider</mat-header-cell>
+        <mat-cell *matCellDef="let appointment">{{ appointment.mainProvider }}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Location">
+        <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+        <mat-cell *matCellDef="let appointment">{{ appointment.location }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let appointment">
+          <button mat-button class="delete-button" (click)="deleteAppointment(appointment.id)">
+            Delete
+          </button>
+        </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="headers" class="appointments-header"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: headers;" class="appointment-item"></mat-row>
+    </mat-table>
+    <button mat-button class="add-button" (click)="createAppointment()">Add New Appointment</button>
+  </div>
+  <div *ngIf="addMode" class="add-form-container">
+    <form [formGroup]="form" (ngSubmit)="saveNewAppointment()">
+      <mat-form-field class="add-form-field">
+        <input matInput type="text" id="location" placeholder="Location" formControlName="location" required>
+      </mat-form-field>
+  
+      <mat-form-field class="add-form-field">
+        <input matInput type="text" id="main_provider" placeholder="Main Provider" formControlName="mainProvider" required>
+      </mat-form-field>
+  
+      <mat-form-field class="add-form-field">
+        <input matInput [matDatepicker]="picker" id="date" placeholder="Date" formControlName="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="add-form-field">
+        <input matInput type="time" id="time" placeholder="Time" formControlName="time" required>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Create Appointment</button>
+      <button mat-raised-button (click)="cancelCreate()">Cancel</button>
+    </form>
+  </div>
+  </div>

@@ -1,0 +1,83 @@
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(85, 117, 176);
+    border-bottom: 1px solid #ccc;
+    color: white;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
+  
+  .close {
+    display: flex;
+    top: 2%;
+    right: 1%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close img {
+    width: 50%;
+    height: 50%;
+  }
+  
+  .close:hover img {
+    width: 55%;
+    height: 55%;
+  }
+  
+  .appointments-header {
+    background-color: #D9FDFF;
+    font-family: 'poppins', serif;
+    font-size: 1rem;
+  }
+
+  .appointment-item {
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .delete-button {
+    background-color: rgb(203, 175, 175);
+  }
+
+  .add-button {
+    display: inline-block;
+    bottom:3%;
+    left: 41%;
+    position: absolute;
+    padding: 10px 20px;
+    border: none;
+    background-color: #b0d7d9;
+    color: #000000;
+    border-radius: 5px; /* Adjust the radius value to control the amount of curvature */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #78a2a4; /* Change the color on hover for a visual effect */
+  }
+  
+  .add-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .add-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
