@@ -15,6 +15,10 @@ import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -24,6 +28,10 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
     ComponentsModule
   ],
     declarations: [

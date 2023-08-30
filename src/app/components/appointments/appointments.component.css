@@ -42,11 +42,42 @@
     transition: background-color 0.3s;
     cursor: pointer;
   }
-  .appointment-item:hover {
-    background-color: #bbbaba;
+  
+  .delete-button {
+    background-color: rgb(203, 175, 175);
+  }
+
+  .add-button {
+    display: inline-block;
+    bottom:3%;
+    left: 41%;
+    position: absolute;
+    padding: 10px 20px;
+    border: none;
+    background-color: #b0d7d9;
+    color: #000000;
+    border-radius: 5px; /* Adjust the radius value to control the amount of curvature */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
+  .add-button:hover {
+    background-color: #78a2a4; /* Change the color on hover for a visual effect */
+  }
   
-  
-  
-  
+  .add-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .add-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
