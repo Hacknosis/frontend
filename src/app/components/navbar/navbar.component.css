@@ -37,3 +37,7 @@
 .nav-item:hover {
   border-color: white; /* Change the border color on hover */
 }
+
+h1 {
+  font-size: 2.5rem;
+}

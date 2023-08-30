@@ -39,7 +39,6 @@ import {NgxImageZoomModule} from "ngx-image-zoom";
     declarations: [
         AppComponent,
         ClickOutsideDirective,
-        UserProfileComponent,
         AppointmentsComponent
     ],
     providers: [
