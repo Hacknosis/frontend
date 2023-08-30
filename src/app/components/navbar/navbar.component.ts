@@ -27,4 +27,8 @@ export class NavbarComponent {
       data: this.user 
     });
   }
+
+  async fileReport() {
+    // call reportservice here
+  }
 }

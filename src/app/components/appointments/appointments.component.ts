@@ -90,6 +90,8 @@ export class AppointmentsComponent {
           Swal.fire("Create Error", "The appointment cannot be created", "error");
         }
       );
+    } else {
+      Swal.fire("Form Invalid", "Please enter a valid appointment", "error");
     }
   }
 
@@ -118,6 +120,8 @@ export class AppointmentsComponent {
             Swal.fire('Delete Error', 'The appointment is not deleted', 'error');
           }
         );
+    } else {
+      Swal.fire('Cancel Delete', 'The appointment is not deleted', 'error');
     }
   }
 }
