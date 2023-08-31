@@ -62,7 +62,7 @@ export class AppointmentsComponent {
       } else if (meridiem === 'AM' && hour === 12) {
         hour = 0;
       }
-      // Assuming selectedDate is the selected date from the datepicker
+      // Datepicker toggler fields
       const selectedDate = new Date(this.form.value.date);
       const year = selectedDate.getFullYear();
       const month = selectedDate.getMonth();
@@ -78,8 +78,8 @@ export class AppointmentsComponent {
         response => {
           if (response === "Appointment updated") {
             Swal.fire("Success", "Appointment created successfully", "success").then(r => {
-              this.addMode = false;
               this.patient.appointments.push(this.newAppointment);
+              this.addMode = false;
             });
           } else {
             Swal.fire("Error", "An error occurred while creating the appointment", "error");
