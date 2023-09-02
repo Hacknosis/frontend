@@ -10,9 +10,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {UserProfileComponent} from "@app/components/user-profile/user-profile.component";
-import {NgxImageZoomModule} from "ngx-image-zoom";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import {NgxImageZoomModule} from "ngx-image-zoom";
     LoginComponent,
     UserProfileComponent
   ],
-  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule, NgxImageZoomModule],
+  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule],
   exports: [
     NavbarComponent
   ],

@@ -48,7 +48,12 @@ export class AccountService {
     }
 
     public updateUserInfo(updatedUser: User): Observable<string> {
-        const url = `${environment.apiUrl}/user/info_update`;    
-        return this.httpClient.put(url, updatedUser, {responseType: "text"});
+        const url = `${environment.apiUrl}/user/info_update`;
+        return this.httpClient.put(url, updatedUser, { responseType: "text" });
+    }
+
+    public exchangeToken(): Observable<string> {
+        const url = `${environment.apiUrl}/auth/exchange_token`;
+        return this.httpClient.get(url, { responseType: "text" });
     }
 }
