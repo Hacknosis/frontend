@@ -69,7 +69,11 @@
   border-radius: 20px;
 }
 
-.report-view {
+.patient-info p {
+  overflow-wrap: anywhere
+}
+
+.report-view-instruction {
   width: 40%;
   background-color: #F5F5F5;
   margin: 1%;
@@ -81,33 +85,15 @@
   position: relative;
 }
 
-.report-view h2 {
+.report-view-instruction h2 {
   color: #7E7E7E;
 }
 
-.report-info {
-  text-align: center;
+#bravaViewRoot {
+  width: 40%;
+  height: 85%;
+  margin: 1%;
 }
-
-.close-button {
-  cursor: pointer;
-  font-size: 30px;
-  color: #7E7E7E;
-  position: absolute;
-  right: 1%;
-  top: 1%
-}
-
-::ng-deep .ngxImageZoomContainer > img {
-  max-height: 80%;
-  max-width: 80%;
-}
-
-::ng-deep .ngxImageZoomContainer {
-  width: 100% !important;
-  height: 100% !important;
-}
-
 
 .appointments-button {
   display: inline-block;

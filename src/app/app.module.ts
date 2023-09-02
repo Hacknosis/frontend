@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,13 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
 import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {NgxImageZoomModule} from "ngx-image-zoom";
 
 @NgModule({
   imports: [
@@ -33,8 +31,7 @@ import {NgxImageZoomModule} from "ngx-image-zoom";
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    ComponentsModule,
-    NgxImageZoomModule
+    ComponentsModule
   ],
     declarations: [
         AppComponent,

@@ -8,9 +8,9 @@
         <h2>Pending Reports</h2>
       </div>
       <table mat-table [dataSource]="pendingReports" class="test-report-list">
-        <ng-container matColumnDef="Clinic">
-          <th mat-header-cell *matHeaderCellDef> Clinic </th>
-          <td mat-cell *matCellDef="let report"> {{ report.analysisResult }} </td>
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let report"> {{ report.date | date : "shortTime" }} </td>
         </ng-container>
 
         <ng-container matColumnDef="Report Type">
@@ -31,9 +31,9 @@
         <h2>Reports</h2>
       </div>
       <table mat-table [dataSource]="availableReports" class="test-report-list">
-        <ng-container matColumnDef="Clinic">
-          <th mat-header-cell *matHeaderCellDef> Clinic </th>
-          <td mat-cell *matCellDef="let report"> {{ report.analysisResult }} </td>
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let report"> {{ report.date | date : "shortTime" }} </td>
         </ng-container>
 
         <ng-container matColumnDef="Report Type">
@@ -42,7 +42,7 @@
         </ng-container>
 
         <ng-container matColumnDef="Status">
-          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <th mat-header-cell *matHeaderCellDef> Status </th>
           <td mat-cell *matCellDef="let report"> {{ report.reportStatus }} </td>
         </ng-container>
 
@@ -67,24 +67,11 @@
 
   </div>
 
-  <div class="report-view">
-    <i class="fa-regular fa-circle-xmark close-button" (click)="closeReport()"></i>
-    <h2 *ngIf="!viewing">Please select a report to view</h2>
-    <div *ngIf="viewing" class="report-info">
-      <h2>{{ selectedReport.type }} Report </h2>
-      <p>{{ selectedReport.date | date : "shortTime" }}</p>
-      <p>{{ selectedReport.analysisResult }}</p>
-      <lib-ngx-image-zoom
-        [thumbImage]=selectedReport.testData
-        [fullImage]=selectedReport.testData
-        [magnification]="0.5"
-        [enableScrollZoom]="true"
-        [enableLens]="true"
-        [lensWidth]="150"
-        [lensHeight]="150"
-        zoomMode="click">
-      </lib-ngx-image-zoom>
-    </div>
+  <div *ngIf="!viewing" class="report-view-instruction">
+    <h2 *ngIf="!viewing">Please select by double clicking a report to view</h2>
+    <!--<img *ngIf="viewing && viewer === undefined" src="https://i.gifer.com/ZKZg.gif" alt="Loading GIF">-->
   </div>
+
+  <div *ngIf="viewing" id="bravaViewRoot"></div>
 
 </div>

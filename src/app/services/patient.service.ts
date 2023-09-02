@@ -13,7 +13,7 @@ export class PatientService {
   constructor(private httpClient: HttpClient) { }
 
   public readReports(patient_id: number): Observable<TestReport[]> {
-    let url = `${environment.apiUrl}/report/read/${patient_id}`;
+    let url = `${environment.apiUrl}/report/patient_report/read/${patient_id}`;
     return this.httpClient.get<TestReport[]>(url);
   }
 
@@ -25,5 +25,10 @@ export class PatientService {
   deleteAppointment(appointmentId: number): Observable<any> {
     const url = `${environment.apiUrl}/patient/appointment/${appointmentId}`;
     return this.httpClient.delete(url,{ responseType: 'text' });
+  }
+
+  readPublicationResource(publicationId: string): Observable<string> {
+    const url = `${environment.apiUrl}/report/publication/read/${publicationId}`;
+    return this.httpClient.get(url, {responseType: 'text'});
   }
 }

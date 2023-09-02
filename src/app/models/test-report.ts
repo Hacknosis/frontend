@@ -10,6 +10,9 @@ export class TestReport {
   type: ReportType = ReportType.CT;
   testData: SafeResourceUrl = "";
   reportStatus: ReportStatus = ReportStatus.AVAILABLE;
-  analysisResult: string = "";
+  entityDetectionAnalysisResult: string = "";
+  ontologyLinkingAnalysisResult: string = "";
+  contentId: string = "";
+  publicationId: string = "";
   date: Date = new Date();
 }
