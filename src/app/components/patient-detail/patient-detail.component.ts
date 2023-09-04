@@ -1,3 +1,7 @@
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -64,8 +68,8 @@ export class PatientDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadBravaScript();
-    this.loadBravaViewer();
+    //this.loadBravaScript();
+    //this.loadBravaViewer();
   }
 
   openReport(report: TestReport) {
@@ -116,6 +120,25 @@ export class PatientDetailComponent implements OnInit {
         this.accountService.logout();
       });
     }, 30000);
-  }
+  } 
 
+
+  /*
+  upload(image: any) {
+     // console.log("preparing file")
+    const file: File = image.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+    this.selectedFile = new ImageSnippet(event.target.result, file);
+    this.templateService.saveTemplate(this.selectedFile.file).subscribe(
+    (res) => {
+      alert("You have successfully uploaded the file");
+    },
+    (err) => {
+      alert("Upload failed");
+   })
+    });
+     reader.readAsDataURL(file);
+    }
+    */
 }
