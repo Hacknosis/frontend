@@ -17,9 +17,9 @@ export class PatientService {
     return this.httpClient.get<TestReport[]>(url);
   }
 
-  createAppointment(patientId: number, appointment: Appointment): Observable<any> {
+  createAppointment(patientId: number, appointment: Appointment): Observable<Appointment> {
     const url = `${environment.apiUrl}/patient/appointment/${patientId}`;
-    return this.httpClient.put(url, appointment,{ responseType: 'text' });
+    return this.httpClient.put<Appointment>(url, appointment);
   }
 
   deleteAppointment(appointmentId: number): Observable<any> {

@@ -76,14 +76,11 @@ export class AppointmentsComponent {
 
       this.patientService.createAppointment(this.patient.id, this.newAppointment).subscribe(
         response => {
-          if (response === "Appointment updated") {
-            Swal.fire("Success", "Appointment created successfully", "success").then(r => {
-              this.patient.appointments.push(this.newAppointment);
-              this.addMode = false;
-            });
-          } else {
-            Swal.fire("Error", "An error occurred while creating the appointment", "error");
-          }
+          this.newAppointment = response;
+          Swal.fire("Success", "Appointment created successfully", "success").then(r => {
+            this.patient.appointments.push(this.newAppointment);
+            this.addMode = false;
+          });
         },
         error => {
           console.error("Error creating appointment:", error);

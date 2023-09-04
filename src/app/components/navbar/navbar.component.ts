@@ -34,15 +34,34 @@ export class NavbarComponent {
 
   async fileReport() {
     const screenshotData = await this.reportService.captureScreenshot(this.elementRef.nativeElement);
-    // May update on reportData to manually enter issue description
-    const reportData = this.reportService.prepareReport('Report issued', screenshotData);
-    console.log(reportData);
-    //send request to report service
-    try {
-      await this.reportService.sendReport(reportData);
-      Swal.fire("Success", "Report filed successfully.", "success");
-    } catch (error) {
-      Swal.fire("Error", "An error occurred while filing report.", "error");
+    const { value: issueDescription } = await Swal.fire({
+      title: 'Screenshot saved. \n Please enter the issue description.',
+      input: 'text',
+      inputPlaceholder: 'Type your issue description here',
+      inputAttributes: {
+        required: 'true'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Submit Issue Report',
+      cancelButtonText: 'Cancel Issue Report',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Issue description is required';
+        }
+        return undefined;
+      }
+    });
+    if(issueDescription) {
+      const reportData = this.reportService.prepareReport(issueDescription, screenshotData);
+      console.log(reportData);
+      //send request to report service
+      try {
+        await this.reportService.sendReport(reportData);
+        Swal.fire("Success", "Report filed successfully.", "success");
+      } catch (error) {
+        console.log(error);
+        Swal.fire("Error", "An error occurred while filing report.", "error");
+      }
     }
   }
 }

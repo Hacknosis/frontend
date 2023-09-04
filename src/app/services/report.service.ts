@@ -18,14 +18,14 @@ export class ReportService {
 
   prepareReport(description: string, screenshotDataUrl: string): any {
     return {
-      description: description,
-      screenshot: screenshotDataUrl,
+      issueDescription: description,
+      screenshotData: screenshotDataUrl,
       timestamp: new Date().toISOString()
     };
   }
 
   sendReport(reportData: any): Promise<any> {
-    const apiUrl = `${environment.apiUrl}/report`;
-    return this.httpClient.post(apiUrl, reportData).toPromise();
+    const apiUrl = `${environment.apiUrl}/issue/report_ticket`;
+    return this.httpClient.post(apiUrl, reportData, {responseType: 'text'}).toPromise();
   }
 }
