@@ -120,25 +120,84 @@ export class PatientDetailComponent implements OnInit {
         this.accountService.logout();
       });
     }, 30000);
-  } 
+  }
 
 
-  /*
-  upload(image: any) {
-     // console.log("preparing file")
-    const file: File = image.files[0];
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-    this.selectedFile = new ImageSnippet(event.target.result, file);
-    this.templateService.saveTemplate(this.selectedFile.file).subscribe(
-    (res) => {
-      alert("You have successfully uploaded the file");
-    },
-    (err) => {
-      alert("Upload failed");
-   })
+  async uploadFile(file: any) {
+    const selectedFile = file.files[0];
+    const formData = new FormData();
+    formData.append('report', selectedFile);
+    const { value: fileType } = await Swal.fire({
+      title: 'Select Report Type',
+      input: 'select',
+      inputOptions: {
+        'MRI': 'MRI',
+        'CT': 'CT',
+        'CHEST_X_RAY': 'X-RAY',
+        'BLOOD_TEST': 'BLOOD TEST',
+        'TEXT': 'TEXT',
+      },
+      inputPlaceholder: 'Select report type',
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Please select a report type';
+        }
+        return undefined;
+      }
     });
-     reader.readAsDataURL(file);
+    const { value: fileStatus } = await Swal.fire({
+      title: 'Select Report Status',
+      input: 'select',
+      inputOptions: {
+        'PROCESSING' : 'PROCESSING',
+        'TRANSIT' : "TRANSIT",
+        'ORDERED' : "ORDERED",
+        'AVAILABLE' : "AVAILABLE",
+      },
+      inputPlaceholder: 'Select report status',
+      showCancelButton: true,
+      confirmButtonText: 'Upload',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Please select a report status';
+        }
+        return undefined;
+      }
+    });
+  
+    if (fileType && fileStatus) {
+      console.log(fileType);
+      console.log(fileStatus);
+      formData.append('reportType', fileType);
+      formData.append('reportStatus', fileStatus);
+      if (fileType === 'MRI' || fileType === 'CT' || fileType === 'CHEST_X_RAY' || fileType === 'BLOOD_TEST') {
+        // Handle image upload
+        this.patientService.uploadReport(this.patient_id, formData).subscribe(
+          (response) => {
+            Swal.fire('Success', 'Report uploaded successfully', 'success');
+          },
+          (error) => {
+            console.error(error);
+            Swal.fire('Error', 'Failed to upload report', 'error');
+          }
+        );
+      } else if (fileType === 'TEXT') {
+        // Handle textual upload
+        this.patientService.uploadTextualReport(this.patient_id, formData).subscribe(
+          (response) => {
+            Swal.fire('Success', 'Report uploaded successfully', 'success');
+          },
+          (error) => {
+            console.error(error);
+            Swal.fire('Error', 'Failed to upload report', 'error');
+          }
+        );
+      }
+    } else {
+      Swal.fire("Error", 'Report Type or Report Status Not Selected', 'error');
     }
-    */
+    
+    }
 }

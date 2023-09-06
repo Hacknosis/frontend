@@ -49,6 +49,11 @@
         <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
         <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item" (dblclick)="openReport(row)"></tr>
       </table>
+      <div class="upload-box">
+      <label class="file-upload-container">
+        <input #fileInput type="file" accept="image/*, application/pdf, text/plain" (change)="uploadFile(fileInput)">
+      </label>
+    </div>
     </div>
     <div class="patient-info">
       <h2>{{ patient.name }}</h2>
