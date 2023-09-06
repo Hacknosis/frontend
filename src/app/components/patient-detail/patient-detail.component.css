@@ -109,3 +109,34 @@
 .appointments-button:hover {
   background-color: #78a2a4; /* Change the color on hover for a visual effect */
 }
+
+.upload-box {
+  width: 40%;
+}
+
+file-upload-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.file-upload-container::before {
+  content: "Upload Report"; 
+  display: inline-block;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  background-color: #b0d7d9;
+  border-radius: 4px;
+  transition:0.3s;
+}
+
+.file-upload-container:hover::before {
+  background-color: #78a2a4;
+  transition:0.3s;
+}
+
+.file-upload-container input[type="file"] {
+  display: none;
+}

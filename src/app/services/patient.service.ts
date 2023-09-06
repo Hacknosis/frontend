@@ -31,4 +31,14 @@ export class PatientService {
     const url = `${environment.apiUrl}/report/publication/read/${publicationId}`;
     return this.httpClient.get(url, {responseType: 'text'});
   }
+
+  uploadReport(patientId: number, formData: FormData): Observable<any> {
+    const url = `${environment.apiUrl}/report/image/upload/${patientId}`;
+    return this.httpClient.post(url, formData, {responseType: 'text'});
+  }
+
+  uploadTextualReport(patientId: number, formData: FormData): Observable<any> {
+    const url = `${environment.apiUrl}/report/textual/upload/${patientId}`;
+    return this.httpClient.post(url, formData, {responseType: 'text'});
+  }
 }
