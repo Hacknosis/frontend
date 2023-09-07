@@ -5,7 +5,9 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AccountService} from "@app/services";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from '@angular/material/dialog';
 import {Router} from "@angular/router";
+import {PatientRecentComponent} from '../patient-recent/patient-recent.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -19,7 +21,8 @@ export class PatientListComponent {
 
   constructor(private patientService: PatientService,
               private accountService: AccountService,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
     accountService.user.subscribe(v => {
       this.patientsList = v?.patients!;
       console.log(this.patientsList);
@@ -27,6 +30,15 @@ export class PatientListComponent {
   }
   public selectedPatient(patient: Patient) {
     console.log(patient);
+    this.patientService.addToRecentlyAccessed(patient);
     this.router.navigateByUrl(`patient_detail/${patient.id}`);
+  }
+
+  openRecent() {
+    const dialogRef = this.dialog.open(PatientRecentComponent, {
+      disableClose: true,
+      width: '50%',
+      height: '44%',
+    });
   }
 }

@@ -2,7 +2,7 @@
 <div class="main-content">
   <div class="banner">
     <h2>Round Patients</h2>
-    <button>Recently Accessed</button>
+    <button (click)="openRecent()">Recently Accessed</button>
   </div>
 
   <table mat-table [dataSource]="patientsList" class="mat-elevation-z8 patient-list">

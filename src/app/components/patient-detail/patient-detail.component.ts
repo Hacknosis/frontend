@@ -200,4 +200,8 @@ export class PatientDetailComponent implements OnInit {
     }
     
     }
+
+    public returnToList() {
+      this.router.navigateByUrl('');
+    } 
 }

@@ -1,0 +1,38 @@
+ .banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(85, 117, 176);
+    border-bottom: 1px solid #ccc;
+    color: white;
+  }
+  
+  .close {
+    display: flex;
+    top: 2%;
+    right: 1%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close img {
+    width: 50%;
+    height: 50%;
+  }
+  
+  .close:hover img {
+    width: 55%;
+    height: 55%;
+  }
+  
+  .patients {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .patient-item:hover {
+    background-color: #f5f5f5;
+  }
