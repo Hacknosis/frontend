@@ -7,10 +7,8 @@ import {Patient} from "@app/models/patient";
 import {TestReport} from "@app/models/test-report";
 import {ReportStatus} from "@app/models/report-status";
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { AppointmentsComponent } from '../appointments/appointments.component';
-import {resolve} from "@angular/compiler-cli";
-import {elementAt} from "rxjs";
+import {ReportType} from "@app/models/report-type";
 
 @Component({
   selector: 'app-patient-detail',
@@ -26,6 +24,8 @@ export class PatientDetailComponent implements OnInit {
   availableReports: TestReport[] = [];
   headerName: string[] = ["Date", "Report Type", "Status"];
   viewer: any = undefined;
+  text: boolean = false;
+  textContent: string = "";
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -70,19 +70,24 @@ export class PatientDetailComponent implements OnInit {
 
   openReport(report: TestReport) {
     this.viewing = true;
-    this.accountService.exchangeToken().subscribe(token => {
-      this.viewer.setHttpHeaders({ Authorization: 'Bearer ' + token });
-      this.patientService.readPublicationResource(report.publicationId).subscribe(
-        res => {
-          this.viewer.addPublication(JSON.parse(res), true);
-          this.viewer.render();
-        }, error => {
-          Swal.fire("Error loading report resource", error.errors[0], 'error');
-        }
-      )
-    }, error => {
-      this.accountService.logout();
-    });
+    if (report.type === ReportType.TEXT) {
+      this.text = true;
+      this.textContent = report.content;
+    } else {
+      this.accountService.exchangeToken().subscribe(token => {
+        this.viewer.setHttpHeaders({ Authorization: 'Bearer ' + token });
+        this.patientService.readPublicationResource(report.publicationId).subscribe(
+          res => {
+            this.viewer.addPublication(JSON.parse(res), true);
+            this.viewer.render();
+          }, error => {
+            Swal.fire("Error loading report resource", error.errors[0], 'error');
+          }
+        )
+      }, error => {
+        this.accountService.logout();
+      });
+    }
   }
 
   openDialog(): void {
