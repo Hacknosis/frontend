@@ -8,8 +8,8 @@ export class TestReport {
   id: number = 0;
   patient: Patient = new Patient();
   type: ReportType = ReportType.CT;
-  testData: SafeResourceUrl = "";
   reportStatus: ReportStatus = ReportStatus.AVAILABLE;
+  content: string = "";
   entityDetectionAnalysisResult: string = "";
   ontologyLinkingAnalysisResult: string = "";
   contentId: string = "";

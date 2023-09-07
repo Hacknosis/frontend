@@ -72,11 +72,14 @@
 
   </div>
 
-  <div *ngIf="!viewing" class="report-view-instruction">
+  <div *ngIf="!viewing" class="report-view-container">
     <h2 *ngIf="!viewing">Please select by double clicking a report to view</h2>
-    <!--<img *ngIf="viewing && viewer === undefined" src="https://i.gifer.com/ZKZg.gif" alt="Loading GIF">-->
   </div>
 
-  <div *ngIf="viewing" id="bravaViewRoot"></div>
+  <div *ngIf="viewing && text" class="report-view-container">
+    <p style="margin: 5%">{{textContent}}</p>
+  </div>
+
+  <div *ngIf="viewing && !text" id="bravaViewRoot"></div>
 
 </div>
