@@ -1,12 +1,12 @@
 .main-content {
   display: flex;
   flex-direction: row;
-  height: 90%;
+  height: 90%!important;
 }
 
 .patient-profile {
   width: 60%;
-  height: 85%;
+  height: 85%!important;
   margin: 1%;
   background-color: #EAEEF3;
   display: flex;
@@ -61,7 +61,7 @@
 
 .patient-info {
   width: 40%;
-  height: 60%;
+  height: 60%!important;
   margin: 1% 5% 1% 10%; /* top right bottom left */
   border: 1px solid #ccc;
   padding: 10px;
@@ -81,7 +81,7 @@
   text-align: center;
   flex-direction: column;
   display: flex;
-  height: 85%;
+  height: 85%!important;
   position: relative;
 }
 
@@ -91,7 +91,7 @@
 
 #bravaViewRoot {
   width: 40%;
-  height: 85%;
+  height: 85%!important;
   margin: 1%;
 }
 
