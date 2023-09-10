@@ -13,6 +13,8 @@ import {MatSortModule} from "@angular/material/sort";
 import {UserProfileComponent} from "@app/components/user-profile/user-profile.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import { PatientRecentComponent } from './patient-recent/patient-recent.component';
+import { ReportUploadComponent } from './report-upload/report-upload.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { PatientRecentComponent } from './patient-recent/patient-recent.componen
     PatientDetailComponent,
     LoginComponent,
     UserProfileComponent,
-    PatientRecentComponent
+    PatientRecentComponent,
+    ReportUploadComponent
   ],
-  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule],
+  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule, FormsModule],
   exports: [
     NavbarComponent
   ],
