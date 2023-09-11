@@ -1,0 +1,9 @@
+<div class="main-content">
+  <strong>{{entity.text}}</strong>
+  <p *ngFor="let attribute of entity.attributes">
+    {{attribute.text}} - {{attribute.type}}
+  </p>
+  <p *ngFor="let trait of entity.traits">
+    {{trait}}
+  </p>
+</div>
