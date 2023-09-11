@@ -12,6 +12,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {UserProfileComponent} from "@app/components/user-profile/user-profile.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButtonModule} from "@angular/material/button";
+import { FeatureTextDescriptionComponent } from './feature-text-description/feature-text-description.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,10 @@ import {MatDialogModule} from "@angular/material/dialog";
     NavbarComponent,
     PatientDetailComponent,
     LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FeatureTextDescriptionComponent
   ],
-  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule],
+  imports: [CommonModule, RouterModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatSortModule, MatDialogModule, MatButtonModule, MatTooltipModule],
   exports: [
     NavbarComponent
   ],

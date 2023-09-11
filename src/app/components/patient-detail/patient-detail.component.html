@@ -76,10 +76,10 @@
     <h2 *ngIf="!viewing">Please select by double clicking a report to view</h2>
   </div>
 
-  <div *ngIf="viewing && text" class="report-view-container">
-    <p style="margin: 5%">{{textContent}}</p>
+  <div *ngIf="viewing && selectedReport.type === 'TEXT'" class="report-view-container" [innerHTML]="processedText">
+
   </div>
 
-  <div *ngIf="viewing && !text" id="bravaViewRoot"></div>
+  <div *ngIf="viewing && selectedReport.type !== 'TEXT'" id="bravaViewRoot"></div>
 
 </div>
