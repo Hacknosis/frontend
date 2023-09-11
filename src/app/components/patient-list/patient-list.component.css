@@ -14,10 +14,17 @@
 
 .banner button {
   border-radius: 100px;
+  border-width:0ch;
   background-color: #666666;
   color: white;
   margin-right: 1%;
   cursor: pointer;
+  transition:0.3s;
+}
+
+.banner button:hover {
+  background-color: #989595;
+  transition:0.3s;
 }
 
 .patient-list {

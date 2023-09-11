@@ -11,10 +11,8 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { AppointmentsComponent } from '../appointments/appointments.component';
 import {ReportType} from "@app/models/report-type";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {
-  FeatureTextDescriptionComponent
-} from "@app/components/feature-text-description/feature-text-description.component";
-
+import {FeatureTextDescriptionComponent} from "@app/components/feature-text-description/feature-text-description.component";
+import { ReportUploadComponent } from '../report-upload/report-upload.component';
 
 @Component({
   selector: 'app-patient-detail',
@@ -187,77 +185,48 @@ export class PatientDetailComponent implements OnInit {
     const selectedFile = file.files[0];
     const formData = new FormData();
     formData.append('report', selectedFile);
-    const { value: fileType } = await Swal.fire({
-      title: 'Select Report Type',
-      input: 'select',
-      inputOptions: {
-        'MRI': 'MRI',
-        'CT': 'CT',
-        'CHEST_X_RAY': 'X-RAY',
-        'BLOOD_TEST': 'BLOOD TEST',
-        'TEXT': 'TEXT',
+  
+    const dialogRef = this.dialog.open(ReportUploadComponent, {
+      disableClose: true,
+      data: {
+        patient_id: this.patient_id,
       },
-      inputPlaceholder: 'Select report type',
-      showCancelButton: true,
-      confirmButtonText: 'Confirm',
-      inputValidator: (value) => {
-        if (!value) {
-          return 'Please select a report type';
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        formData.append('reportType', result.reportType);
+        formData.append('reportStatus', result.reportStatus);
+  
+        if (result.reportType === "TEXT") {
+          // Handle textual upload
+          this.patientService.uploadTextualReport(this.patient_id, formData).subscribe(
+            (response) => {
+              Swal.fire('Success', 'Report uploaded successfully', 'success');
+            },
+            (error) => {
+              console.error(error);
+              Swal.fire('Error', 'Failed to upload report', 'error');
+            }
+          );
+        } else {
+          // Handle image upload (MRI, CT, CHEST_X_RAY, BLOOD_TEST)
+          this.patientService.uploadReport(this.patient_id, formData).subscribe(
+            (response) => {
+              Swal.fire('Success', 'Report uploaded successfully', 'success');
+            },
+            (error) => {
+              console.error(error);
+              Swal.fire('Error', 'Failed to upload report', 'error');
+            }
+          );
         }
-        return undefined;
+      } else {
+        Swal.fire('Error', 'Report Type or Report Status Not Selected', 'error');
       }
     });
-    const { value: fileStatus } = await Swal.fire({
-      title: 'Select Report Status',
-      input: 'select',
-      inputOptions: {
-        'PROCESSING' : 'PROCESSING',
-        'TRANSIT' : "TRANSIT",
-        'ORDERED' : "ORDERED",
-        'AVAILABLE' : "AVAILABLE",
-      },
-      inputPlaceholder: 'Select report status',
-      showCancelButton: true,
-      confirmButtonText: 'Upload',
-      inputValidator: (value) => {
-        if (!value) {
-          return 'Please select a report status';
-        }
-        return undefined;
-      }
-    });
-
-    if (fileType && fileStatus) {
-      // console.log(fileType);
-      // console.log(fileStatus);
-      formData.append('reportType', fileType);
-      formData.append('reportStatus', fileStatus);
-      if (fileType === 'MRI' || fileType === 'CT' || fileType === 'CHEST_X_RAY' || fileType === 'BLOOD_TEST') {
-        // Handle image upload
-        this.patientService.uploadReport(this.patient_id, formData).subscribe(
-          (response) => {
-            Swal.fire('Success', 'Report uploaded successfully', 'success');
-          },
-          (error) => {
-            console.error(error);
-            Swal.fire('Error', 'Failed to upload report', 'error');
-          }
-        );
-      } else if (fileType === 'TEXT') {
-        // Handle textual upload
-        this.patientService.uploadTextualReport(this.patient_id, formData).subscribe(
-          (response) => {
-            Swal.fire('Success', 'Report uploaded successfully', 'success');
-          },
-          (error) => {
-            console.error(error);
-            Swal.fire('Error', 'Failed to upload report', 'error');
-          }
-        );
-      }
-    } else {
-      Swal.fire("Error", 'Report Type or Report Status Not Selected', 'error');
-    }
-
-    }
+  }
+  public returnToList() {
+    this.router.navigateByUrl('');
+  }
 }

@@ -8,7 +8,7 @@
     min-height: 100vh;
     align-items: center;
     flex-direction: column;
-    background-image: url("https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDE2fHxtZWRpY2luZXxlbnwwfHx8fDE2OTE5NDUyODF8MA&ixlib=rb-4.0.3&w=1500");
+    background-image: url('../../../assets/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -219,4 +219,8 @@
 
   .inputfield {
     width:100%;
+  }
+
+  button {
+    transition: 0.3s;
   }

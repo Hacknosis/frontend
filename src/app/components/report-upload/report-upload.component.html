@@ -1,0 +1,26 @@
+<div class="report-upload-dialog">
+    <h2>Upload Report</h2>
+    <div class="form-group">
+      <label for="reportType">Select Report Type</label>
+      <select id="reportType" [(ngModel)]="selectedReportType" class="form-control" placeholder="Report Type">
+        <option value="MRI">MRI</option>
+        <option value="CT">CT</option>
+        <option value="CHEST_X_RAY">CHEST_X_RAY</option>
+        <option value="BLOOD_TEST">BLOOD TEST</option>
+        <option value="TEXT">TEXT</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="reportStatus">Select Report Status</label>
+      <select id="reportStatus" [(ngModel)]="selectedReportStatus" class="form-control" placeholder="Report Status">
+        <option value="PROCESSING">PROCESSING</option>
+        <option value="TRANSIT">TRANSIT</option>
+        <option value="ORDERED">ORDERED</option>
+        <option value="AVAILABLE">AVAILABLE</option>
+      </select>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn btn-secondary" (click)="dialogRef.close()">Cancel</button>
+      <button class="btn btn-primary" (click)="confirmUpload()">Confirm</button>
+    </div>
+  </div>
