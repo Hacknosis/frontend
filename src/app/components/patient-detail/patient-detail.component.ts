@@ -185,19 +185,19 @@ export class PatientDetailComponent implements OnInit {
     const selectedFile = file.files[0];
     const formData = new FormData();
     formData.append('report', selectedFile);
-  
+
     const dialogRef = this.dialog.open(ReportUploadComponent, {
       disableClose: true,
       data: {
         patient_id: this.patient_id,
       },
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         formData.append('reportType', result.reportType);
         formData.append('reportStatus', result.reportStatus);
-  
+
         if (result.reportType === "TEXT") {
           // Handle textual upload
           this.patientService.uploadTextualReport(this.patient_id, formData).subscribe(
@@ -206,7 +206,7 @@ export class PatientDetailComponent implements OnInit {
             },
             (error) => {
               console.error(error);
-              Swal.fire('Error', 'Failed to upload report', 'error');
+              Swal.fire('Error', 'Failed to upload report - ' + error.error, 'error');
             }
           );
         } else {
@@ -217,7 +217,7 @@ export class PatientDetailComponent implements OnInit {
             },
             (error) => {
               console.error(error);
-              Swal.fire('Error', 'Failed to upload report', 'error');
+              Swal.fire('Error', 'Failed to upload report - ' + error.error, 'error');
             }
           );
         }
