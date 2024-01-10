@@ -62,23 +62,23 @@ export class PatientDetailComponent implements OnInit {
       });
       return;
     }
-    this.patientService.readReports(this.patient_id).subscribe((res) => {
+    /*this.patientService.readReports(this.patient_id).subscribe((res) => {
       this.availableReports = res.filter(v => v.reportStatus === ReportStatus.AVAILABLE);
       this.pendingReports = res.filter(v => v.reportStatus !== ReportStatus.AVAILABLE);
     }, (error) => {
       Swal.fire('Error when reading report', error.errors[0],'error').then(r => {
         router.navigateByUrl("/");
       });
-    });
+    });*/
   }
 
   ngOnInit(): void {
-    this.loadBravaScript();
-    this.loadBravaViewer();
+    // this.loadBravaScript();
+    // this.loadBravaViewer();
   }
 
   ngAfterViewChecked() {
-    for (let i = 1; i <= this.entities.length; i++) {
+    /*for (let i = 1; i <= this.entities.length; i++) {
       if (!this.eventHandled[i] && this.elementRef.nativeElement.querySelector(`#feature-text-${i}`)) {
         this.elementRef.nativeElement
           .querySelector(`#feature-text-${i}`)
@@ -90,7 +90,7 @@ export class PatientDetailComponent implements OnInit {
 
         this.eventHandled[i] = true;
       }
-    }
+    }*/
   }
 
   closeExtraInfo() {
