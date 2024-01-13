@@ -1,11 +1,11 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
-import { Patient } from '@app/models/patient';
-import { Appointment } from '@app/models/appointment';
-import { PatientService } from "@app/services";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Patient} from '@app/models/patient';
+import {Appointment} from '@app/models/appointment';
+import {PatientService} from "@app/services";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from "sweetalert2";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-appointments',
@@ -19,14 +19,18 @@ export class AppointmentsComponent {
   addMode = false;
   form: FormGroup;
   newAppointment: Appointment = new Appointment();
+  remote = false;
 
   constructor(public dialogRef: MatDialogRef<AppointmentsComponent>,
     private patientService: PatientService,
     private formBuilder: FormBuilder,
+    private datePipe: DatePipe,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.patient = data.patient;
       this.appointments = this.patient.appointments;
-      console.log(this.appointments);
+      for (const appointment of this.appointments) {
+        appointment.appointmentTime = new Date(this.transformDate(new Date(appointment.appointmentTime)));
+      }
       this.form = this.formBuilder.group({
         location: ['', Validators.required],
         mainProvider: ['', Validators.required],
@@ -72,12 +76,13 @@ export class AppointmentsComponent {
       this.newAppointment.location = this.form.value.location;
       this.newAppointment.mainProvider = this.form.value.mainProvider;
       this.newAppointment.appointmentTime = new Date(year, month, day, hour, minute);
-      console.log(this.newAppointment);
+      this.newAppointment.remote = this.remote;
 
       this.patientService.createAppointment(this.patient.id, this.newAppointment).subscribe(
         response => {
           this.newAppointment = response;
-          Swal.fire("Success", "Appointment created successfully", "success").then(r => {
+          Swal.fire("Success", "Appointment created successfully", "success").then(() => {
+            this.newAppointment.appointmentTime = new Date(this.transformDate(new Date(this.newAppointment.appointmentTime)));
             this.patient.appointments.push(this.newAppointment);
             this.addMode = false;
           });
@@ -92,6 +97,12 @@ export class AppointmentsComponent {
     }
   }
 
+  transformDate(date: Date): string {
+    const estOffset = -5 * 60; // UTC offset for Eastern Time in minutes
+    const estDate = new Date(date.getTime() + estOffset * 60000);
+    return this.datePipe.transform(estDate, 'yyyy-MM-ddTHH:mm')!;
+  }
+
   cancelCreate(): void {
     this.addMode = false;
     this.form.reset();
@@ -102,7 +113,7 @@ export class AppointmentsComponent {
       this.patientService.deleteAppointment(appointmentId)
         .subscribe(
           response => {
-            console.log(response); 
+            console.log(response);
             if (response === "Appointment deleted") {
               Swal.fire("Success", "Appointment deleted successfully", "success").then(r => {
                 this.appointments = this.appointments.filter(appointment => appointment.id !== appointmentId);

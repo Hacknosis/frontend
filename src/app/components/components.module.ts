@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component'
@@ -33,7 +33,9 @@ import { FormsModule } from '@angular/forms';
   exports: [
     NavbarComponent
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}

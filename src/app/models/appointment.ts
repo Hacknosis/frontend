@@ -5,5 +5,6 @@ export class Appointment {
     appointmentTime: Date = new Date();
     location: string = "";
     mainProvider: string = "";
-    id: number=0;
+    id: number = 0;
+    remote: boolean = false;
 }
