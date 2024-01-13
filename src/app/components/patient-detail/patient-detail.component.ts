@@ -73,8 +73,6 @@ export class PatientDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadBravaScript();
-    this.loadBravaViewer();
   }
 
   ngAfterViewChecked() {
@@ -155,7 +153,7 @@ export class PatientDetailComponent implements OnInit {
       data: { patient: this.patient }
     });
   }
-
+/*
   loadBravaScript(): void {
     const url: string = "https://na-1-dev.api.opentext.com/viewer/api/v1/viewers/brava-view-1.x/loader";
     const script = document.createElement('script');
@@ -179,7 +177,7 @@ export class PatientDetailComponent implements OnInit {
       });
     }, 30000);
   }
-
+*/
 
   async uploadFile(file: any) {
     const selectedFile = file.files[0];
