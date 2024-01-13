@@ -11,11 +11,14 @@ import { MaterialModule } from 'src/material.module';
 import { ComponentsModule } from '@app/components/components.module';
 import {AuthInterceptorService} from "@app/services";
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { WorkloadComponent } from './components/workload/workload.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -31,12 +34,15 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     ComponentsModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatIconModule
   ],
     declarations: [
         AppComponent,
         ClickOutsideDirective,
         AppointmentsComponent,
+        WorkloadComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
