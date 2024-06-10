@@ -6,6 +6,8 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { User } from '@app/models';
 import Swal from "sweetalert2";
 import html2canvas from 'html2canvas';
+import { WorkloadComponent } from '../workload/workload.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +19,7 @@ export class NavbarComponent {
   issueDescription: string = '';
 
   constructor(public dialog: MatDialog,private accountService: AccountService,
-    private reportService: ReportService) {
+    private reportService: ReportService, private router:Router) {
     this.user = this.accountService.userValue;
   }
   logout() {
@@ -31,6 +33,19 @@ export class NavbarComponent {
       height: '60%',
       data: this.user 
     });
+  }
+
+  openWorkload() {
+    if(this.router.url === '/') {
+      Swal.fire('Please select a patient.', '', 'error');
+    } else {
+      this.dialog.open(WorkloadComponent, {
+        disableClose: true,
+        width: '60%',
+        height: '50%',
+        data: this.user 
+      });
+    }   
   }
 
   async fileReport() {

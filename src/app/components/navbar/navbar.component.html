@@ -3,6 +3,10 @@
     <h1>Dr. {{ user?.name }}</h1>
   </div>
   <div class="nav-items-list">
+    <div class="nav-item" (click)="openWorkload()">
+      <img src="assets/Signing.svg" width="55" height="55">
+      <p>Workload</p>
+    </div>
     <div class="nav-item" (click)="fileReport()">
       <img style="padding-top: 3px" src="assets/Info.svg" width="70" height="70">
       <p style="margin-top: -20px">Report</p>
