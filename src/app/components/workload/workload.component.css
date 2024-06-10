@@ -1,0 +1,134 @@
+.close {
+    display: flex;
+    top: 2%;
+    right: 1%;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+  .close img {
+    width: 50%;
+    height: 50%;
+  }
+  
+  .close:hover img {
+    width: 55%;
+    height: 55%;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(85, 117, 176);
+    border-bottom: 1px solid #ccc;
+    color: white;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
+
+  .data-header {
+    background-color: #D9FDFF;
+    font-family: 'poppins', serif;
+    font-size: 1rem;
+  }
+  .item:hover {
+    background-color:#ccc;
+  }
+
+  .select {
+    font-size: 1rem;
+  }
+
+  .report-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 20%;
+    width: 50%;
+    padding: 5%;
+    background-color: #ffffff; /* Optional background color */
+  }
+
+  .sign-button-off {
+    background-color: #dcdcdc; 
+    color: #555;
+    border: 1px solid #999; 
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .sign-button-on {
+    background-color:#3498db;
+    color: #fff;
+    border: 1px solid #3498db; 
+    padding: 10px 20px; 
+    cursor: pointer;
+  }
+
+  .reportinfo {
+    background-color: #e6f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto; /* Add top margin of 20px */
+    max-width: 400px;
+  }
+  
+  .reportinfo p {
+    margin: 8px 0;
+  }
+  
+  .reportinfo strong {
+    margin-right: 8px;
+  }
+  
+  .reportinfo .select {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dropdown button {
+    background-color: #3498db; 
+    color: #fff;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    width: 40%;
+    cursor: pointer;
+    font-size: larger;
+  }
+  
+  .dropdown button:hover {
+    background-color: #2980b9;
+  }
+  
+  .mat-menu-panel {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-menu-item {
+    color: #333;
+  }
+  
+  .mat-menu-item:hover {
+    background-color: #e6f7ff;
+  }
+
+  .back-button {
+    background-color: #dcdcdc; 
+    color: #555;
+    border: 1px solid #999; 
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
