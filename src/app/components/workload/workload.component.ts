@@ -4,10 +4,12 @@ import { Patient } from '@app/models/patient';
 import { AccountService, PatientService } from "@app/services";
 import {UserService} from "@app/services/user.service";
 import Swal from "sweetalert2";
-import { TestReport } from '@app/models/test-report';
+import { ImageReport } from '@app/models/image-report';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@app/models';
 import { ReportStatus } from '@app/models/report-status';
+import {ReportService} from "@app/services/report.service";
+import {TextualReport} from "@app/models/textual-report";
 
 @Component({
   selector: 'app-workload',
@@ -17,20 +19,22 @@ import { ReportStatus } from '@app/models/report-status';
 export class WorkloadComponent {
     doctor: User = new User();
     patient: Patient = new Patient();
-    reports: TestReport[] = [];
+    textualReports: TextualReport[] = [];
+    imageReports: ImageReport[] = [];
     headers: string[] = ["Date", "Report Type", "Status"];
     patient_id: number = -1;
 
     selectMode = false;
     sendMode = false;
-    selectedReport: TestReport | undefined;
+    selectedReport: ImageReport | undefined;
     selectedUserStr: string | undefined;
     selectedUser: User = new User();
     users: User[] = [];
 
     constructor(public dialogRef: MatDialogRef<WorkloadComponent>, private router:Router,
         private route: ActivatedRoute,private accountService: AccountService,private userService:UserService,
-        private patientService: PatientService) {
+        private patientService: PatientService,
+        private reportService: ReportService) {
         //get users
         this.userService.getUsers().subscribe((users) => {
             this.users = users.filter(v => v.id !== this.doctor.id);  //exclude self
@@ -48,16 +52,24 @@ export class WorkloadComponent {
         const res = this.doctor.patients!.find(p => p.id === this.patient_id);
         this.patient = res ? res: new Patient();
 
-        this.patientService.readReports(this.patient_id).subscribe((res) => {
-            this.reports = res.filter(v => v.reportStatus === ReportStatus.AVAILABLE);
+        this.reportService.readTextualReports(this.patient_id).subscribe((res) => {
+            this.textualReports = res.filter(v => v.reportStatus === ReportStatus.AVAILABLE);
           }, (error) => {
-            Swal.fire('Error when reading report', error.errors[0],'error').then(r => {
+            Swal.fire('Error when reading textual reports', error.errors[0],'error').then(r => {
               router.navigateByUrl("/");
             });
           });
+
+        this.reportService.readImageReports(this.patient_id).subscribe((res) => {
+          this.imageReports = res.filter(v => v.reportStatus === ReportStatus.AVAILABLE);
+        }, (error) => {
+          Swal.fire('Error when reading image reports', error.errors[0],'error').then(r => {
+            router.navigateByUrl("/");
+          });
+        });
     }
 
-    select(report: TestReport):void {
+    select(report: ImageReport):void {
       console.log(report);
       this.selectMode = true;
       this.selectedReport = report;
@@ -83,7 +95,7 @@ export class WorkloadComponent {
         error => {
           Swal.fire('There is an error when sending the report', '', 'error');
         }
-      );  
+      );
     }
 
     closeDialog(): void {

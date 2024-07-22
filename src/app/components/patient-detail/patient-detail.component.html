@@ -5,9 +5,14 @@
 
     <div class="report-gallery">
       <div class="report-list-title">
-        <h2>Pending Reports</h2>
+        <h2>Textual Reports</h2>
       </div>
-      <table mat-table [dataSource]="pendingReports" class="test-report-list">
+      <table mat-table [dataSource]="textualReports" class="test-report-list">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let report"> {{ report.reportName }} </td>
+        </ng-container>
+
         <ng-container matColumnDef="Date">
           <th mat-header-cell *matHeaderCellDef> Date </th>
           <td mat-cell *matCellDef="let report"> {{ report.date | date : "shortTime" }} </td>
@@ -15,7 +20,7 @@
 
         <ng-container matColumnDef="Report Type">
           <th mat-header-cell *matHeaderCellDef> Report Type </th>
-          <td mat-cell *matCellDef="let report"> {{ report.type }} </td>
+          <td mat-cell *matCellDef="let report"> {{ report.reportType }} </td>
         </ng-container>
 
         <ng-container matColumnDef="Status">
@@ -24,13 +29,18 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
-        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item" (dblclick)="openTextualReport(row)"></tr>
       </table>
-
+      <br>
       <div class="report-list-title">
-        <h2>Reports</h2>
+        <h2>Image Reports</h2>
       </div>
-      <table mat-table [dataSource]="availableReports" class="test-report-list">
+      <table mat-table [dataSource]="imageReports" class="test-report-list">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let report"> {{ report.reportName }} </td>
+        </ng-container>
+
         <ng-container matColumnDef="Date">
           <th mat-header-cell *matHeaderCellDef> Date </th>
           <td mat-cell *matCellDef="let report"> {{ report.date | date : "shortTime" }} </td>
@@ -38,7 +48,7 @@
 
         <ng-container matColumnDef="Report Type">
           <th mat-header-cell *matHeaderCellDef> Report Type </th>
-          <td mat-cell *matCellDef="let report"> {{ report.type }} </td>
+          <td mat-cell *matCellDef="let report"> {{ report.reportType }} </td>
         </ng-container>
 
         <ng-container matColumnDef="Status">
@@ -47,7 +57,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="headerName" class="test-report-list-header"></tr>
-        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item" (dblclick)="openReport(row)"></tr>
+        <tr mat-row *matRowDef="let row; columns: headerName" class="test-report-list-item" (dblclick)="openImageReport(row)"></tr>
       </table>
       <div class="upload-box">
       <label class="file-upload-container">
@@ -68,7 +78,7 @@
         <button mat-button class="appointments-button" (click)="openDialog()">See All Appointments</button>
       </div>
     </div>
-    
+
 
   </div>
 
@@ -76,11 +86,17 @@
     <h2 *ngIf="!viewing">Please select by double clicking a report to view</h2>
   </div>
 
-  <div *ngIf="viewing && selectedReport.type === 'TEXT'" class="report-view-container" [innerHTML]="processedText">
+  <div *ngIf="viewing && selectedTextualReport !== null" class="report-view-container" [innerHTML]="processedText">
 
   </div>
 
-  <div *ngIf="viewing && selectedReport.type !== 'TEXT'" id="bravaViewRoot"></div>
+  <div *ngIf="viewing && selectedImageReport !== null" class="report-view-container">
+    <canvas #viewer
+            (mousedown)="startDrawing($event)"
+            (mousemove)="draw($event)"
+            (mouseup)="endDrawing($event)">
+    </canvas>
+  </div>
 
 </div>
 <button mat-button class="returnList" (click)="returnToList()">Back To Patient List</button>

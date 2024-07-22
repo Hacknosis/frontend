@@ -1,7 +1,7 @@
-import { TestReport } from './test-report';
+import { ImageReport } from './image-report';
 
 describe('TestReport', () => {
   it('should create an instance', () => {
-    expect(new TestReport()).toBeTruthy();
+    expect(new ImageReport()).toBeTruthy();
   });
 });

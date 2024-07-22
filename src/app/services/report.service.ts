@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "@environments/environment";
 import html2canvas from 'html2canvas';
+import {Observable} from "rxjs";
+import {ImageReport} from "@app/models/image-report";
+import {TextualReport} from "@app/models/textual-report";
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +46,25 @@ export class ReportService {
     }
     const byteArray = new Uint8Array(byteNumbers);
     return new File([byteArray], "Screenshot.png", {type: fileType});
+  }
+
+  uploadReport(patientId: number, formData: FormData): Observable<any> {
+    const url = `${environment.apiUrl}/report/image/upload/${patientId}`;
+    return this.httpClient.post(url, formData, {responseType: 'text'});
+  }
+
+  uploadTextualReport(patientId: number, formData: FormData): Observable<any> {
+    const url = `${environment.apiUrl}/report/textual/upload/${patientId}`;
+    return this.httpClient.post(url, formData, {responseType: 'text'});
+  }
+
+  readTextualReports(patient_id: number): Observable<TextualReport[]> {
+    let url = `${environment.apiUrl}/report/textual/read/${patient_id}`;
+    return this.httpClient.get<TextualReport[]>(url);
+  }
+
+  readImageReports(patient_id: number): Observable<ImageReport[]> {
+    let url = `${environment.apiUrl}/report/image/read/${patient_id}`;
+    return this.httpClient.get<ImageReport[]>(url);
   }
 }
